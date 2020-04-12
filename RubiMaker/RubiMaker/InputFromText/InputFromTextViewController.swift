@@ -16,9 +16,22 @@ class InputFromTextViewController: UIViewController {
     @IBOutlet private weak var convertedTextView: UITextView!
     @IBOutlet private weak var convertButton: UIButton!
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+}
 
+extension InputFromTextViewController {
+    class func instance() -> InputFromTextViewController {
+        guard let viewController: InputFromTextViewController =
+            UIStoryboard.viewController(
+                storyboardName: InputFromTextViewController.className,
+                identifier: InputFromTextViewController.className) else {
+                    fatalError("InputFromTextViewController not found.")
+        }
+        viewController.modalPresentationStyle = .pageSheet
+        return viewController
+    }
 }

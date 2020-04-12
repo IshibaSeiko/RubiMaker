@@ -10,8 +10,13 @@ import UIKit
 
 class HistoryViewController: UIViewController {
 
-    @IBOutlet weak var historyTableView: UITableView!
+    // MARK: IBOutlet
+    @IBOutlet private weak var historyTableView: UITableView!
 
+    // MARK: Property
+    let inputFromTextViewController = InputFromTextViewController.instance()
+
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 

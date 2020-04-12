@@ -20,6 +20,7 @@
 		5760DBD0244308570085BD04 /* InputFromTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5760DBCF244308570085BD04 /* InputFromTextViewController.swift */; };
 		5760DBD22443086B0085BD04 /* InputFromTextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5760DBD12443086B0085BD04 /* InputFromTextViewController.storyboard */; };
 		576E1A1E24430D4600819B2E /* UIStoryboard+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */; };
+		576E1A212443449800819B2E /* GetClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A202443449800819B2E /* GetClassName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		5760DBCF244308570085BD04 /* InputFromTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFromTextViewController.swift; sourceTree = "<group>"; };
 		5760DBD12443086B0085BD04 /* InputFromTextViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputFromTextViewController.storyboard; sourceTree = "<group>"; };
 		576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Instance.swift"; sourceTree = "<group>"; };
+		576E1A202443449800819B2E /* GetClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClassName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		5760DB93244300DA0085BD04 /* RubiMaker */ = {
 			isa = PBXGroup;
 			children = (
+				576E1A1F2443447C00819B2E /* Utilities */,
 				5760DBD32443086F0085BD04 /* InputFromText */,
 				5760DBC62443026E0085BD04 /* History */,
 				5760DBC4244302340085BD04 /* Application */,
@@ -181,6 +184,14 @@
 				576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		576E1A1F2443447C00819B2E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				576E1A202443449800819B2E /* GetClassName.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +331,7 @@
 				5760DB95244300DA0085BD04 /* AppDelegate.swift in Sources */,
 				5760DBD0244308570085BD04 /* InputFromTextViewController.swift in Sources */,
 				5760DBCD244303370085BD04 /* HistoryTableViewCell.swift in Sources */,
+				576E1A212443449800819B2E /* GetClassName.swift in Sources */,
 				5760DB97244300DA0085BD04 /* SceneDelegate.swift in Sources */,
 				576E1A1E24430D4600819B2E /* UIStoryboard+Instance.swift in Sources */,
 			);
