@@ -8,10 +8,9 @@
 
 import UIKit
 
-class InputFromTextViewController: UIViewController {
+final class InputFromTextViewController: UIViewController {
 
     // MARK: - IBOutlet
-    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var inputTextView: UITextView!
     @IBOutlet private weak var convertedTextView: UITextView!
     @IBOutlet private weak var convertButton: UIButton!
@@ -31,7 +30,6 @@ extension InputFromTextViewController {
                 identifier: InputFromTextViewController.className) else {
                     fatalError("InputFromTextViewController not found.")
         }
-        viewController.modalPresentationStyle = .pageSheet
         return viewController
     }
 }
