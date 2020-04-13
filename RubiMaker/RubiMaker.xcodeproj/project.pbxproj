@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,12 @@
 		576E1A1E24430D4600819B2E /* UIStoryboard+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */; };
 		576E1A212443449800819B2E /* GetClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A202443449800819B2E /* GetClassName.swift */; };
 		576E1A2324434E2300819B2E /* PresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A2224434E2300819B2E /* PresentationLayout.swift */; };
+		576E1A282444BF9C00819B2E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A272444BF9C00819B2E /* Alamofire */; };
+		576E1A2B2444C04700819B2E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A2A2444C04700819B2E /* Realm */; };
+		576E1A2D2444C04700819B2E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A2C2444C04700819B2E /* RealmSwift */; };
+		576E1A302444C08E00819B2E /* ObjcExceptionBridging in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A2F2444C08E00819B2E /* ObjcExceptionBridging */; };
+		576E1A322444C08E00819B2E /* XCGLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A312444C08E00819B2E /* XCGLogger */; };
+		576E1A352444C0CA00819B2E /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A342444C0CA00819B2E /* Reachability */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +76,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576E1A302444C08E00819B2E /* ObjcExceptionBridging in Frameworks */,
+				576E1A352444C0CA00819B2E /* Reachability in Frameworks */,
+				576E1A2D2444C04700819B2E /* RealmSwift in Frameworks */,
+				576E1A2B2444C04700819B2E /* Realm in Frameworks */,
+				576E1A282444BF9C00819B2E /* Alamofire in Frameworks */,
+				576E1A322444C08E00819B2E /* XCGLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +225,14 @@
 			dependencies = (
 			);
 			name = RubiMaker;
+			packageProductDependencies = (
+				576E1A272444BF9C00819B2E /* Alamofire */,
+				576E1A2A2444C04700819B2E /* Realm */,
+				576E1A2C2444C04700819B2E /* RealmSwift */,
+				576E1A2F2444C08E00819B2E /* ObjcExceptionBridging */,
+				576E1A312444C08E00819B2E /* XCGLogger */,
+				576E1A342444C0CA00819B2E /* Reachability */,
+			);
 			productName = RubiMaker;
 			productReference = 5760DB91244300DA0085BD04 /* RubiMaker.app */;
 			productType = "com.apple.product-type.application";
@@ -285,6 +305,12 @@
 				Base,
 			);
 			mainGroup = 5760DB88244300DA0085BD04;
+			packageReferences = (
+				576E1A262444BF9C00819B2E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				576E1A292444C04700819B2E /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				576E1A2E2444C08E00819B2E /* XCRemoteSwiftPackageReference "XCGLogger" */,
+				576E1A332444C0C900819B2E /* XCRemoteSwiftPackageReference "Reachability" */,
+			);
 			productRefGroup = 5760DB92244300DA0085BD04 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -656,6 +682,74 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		576E1A262444BF9C00819B2E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.5;
+			};
+		};
+		576E1A292444C04700819B2E /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.3.2;
+			};
+		};
+		576E1A2E2444C08E00819B2E /* XCRemoteSwiftPackageReference "XCGLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DaveWoodCom/XCGLogger.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.1;
+			};
+		};
+		576E1A332444C0C900819B2E /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		576E1A272444BF9C00819B2E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576E1A262444BF9C00819B2E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		576E1A2A2444C04700819B2E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576E1A292444C04700819B2E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		576E1A2C2444C04700819B2E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576E1A292444C04700819B2E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		576E1A2F2444C08E00819B2E /* ObjcExceptionBridging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576E1A2E2444C08E00819B2E /* XCRemoteSwiftPackageReference "XCGLogger" */;
+			productName = ObjcExceptionBridging;
+		};
+		576E1A312444C08E00819B2E /* XCGLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576E1A2E2444C08E00819B2E /* XCRemoteSwiftPackageReference "XCGLogger" */;
+			productName = XCGLogger;
+		};
+		576E1A342444C0CA00819B2E /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576E1A332444C0C900819B2E /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5760DB89244300DA0085BD04 /* Project object */;
 }
