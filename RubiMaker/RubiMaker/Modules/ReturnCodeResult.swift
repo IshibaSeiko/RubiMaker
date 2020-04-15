@@ -10,11 +10,12 @@ import UIKit
 
 enum IndividualResult {
     case loading
-    case success(T: Decodable)
+    case success(_ T: Decodable)
     case failure(_ error: Error)
+    case decodeError
 }
 
-protocol ReturnCodeResult: class {
+protocol ReturnCodeResult: AnyObject {
     func returnCodeResult(returnCode: IndividualResult)
 }
 

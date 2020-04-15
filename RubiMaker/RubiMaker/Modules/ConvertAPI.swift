@@ -11,7 +11,9 @@ import UIKit
 final class ConvertAPI {
     func convert(_ sentence: String, type: ConvertType = .hiragana) {
 
+        weak var returnCodeResult: ReturnCodeResult?
         let request = ConvertRequest(sentence, type: type)
+        returnCodeResult?.returnCodeResult(returnCode: .loading)
 
         APIClient.request(request: request) { response in
             switch response {
@@ -24,12 +26,13 @@ final class ConvertAPI {
                 }
                 do {
                     let decodedResult = try decoder.decode(ConvertResponse.self, from: result)
+                    returnCodeResult?.returnCodeResult(returnCode: .success(decodedResult))
                 } catch {
-                    log?.info()
+                    returnCodeResult?.returnCodeResult(returnCode: .decodeError)
                 }
 
             case .failure(let error):
-
+                returnCodeResult?.returnCodeResult(returnCode: .failure(error))
                 break
             }
         }
