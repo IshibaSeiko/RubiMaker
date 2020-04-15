@@ -19,6 +19,9 @@
 		5760DBCE244303370085BD04 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5760DBCC244303370085BD04 /* HistoryTableViewCell.xib */; };
 		5760DBD0244308570085BD04 /* InputFromTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5760DBCF244308570085BD04 /* InputFromTextViewController.swift */; };
 		5760DBD22443086B0085BD04 /* InputFromTextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5760DBD12443086B0085BD04 /* InputFromTextViewController.storyboard */; };
+		576499D924472FE10088B6D6 /* ConvertRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576499D824472FE10088B6D6 /* ConvertRequest.swift */; };
+		576499DB244731C00088B6D6 /* ConvertAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576499DA244731C00088B6D6 /* ConvertAPI.swift */; };
+		576499DD244731EB0088B6D6 /* ConvertResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576499DC244731EB0088B6D6 /* ConvertResponse.swift */; };
 		576E1A1E24430D4600819B2E /* UIStoryboard+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */; };
 		576E1A212443449800819B2E /* GetClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A202443449800819B2E /* GetClassName.swift */; };
 		576E1A2324434E2300819B2E /* PresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A2224434E2300819B2E /* PresentationLayout.swift */; };
@@ -28,6 +31,9 @@
 		576E1A302444C08E00819B2E /* ObjcExceptionBridging in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A2F2444C08E00819B2E /* ObjcExceptionBridging */; };
 		576E1A322444C08E00819B2E /* XCGLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A312444C08E00819B2E /* XCGLogger */; };
 		576E1A352444C0CA00819B2E /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A342444C0CA00819B2E /* Reachability */; };
+		576E1A372444C44100819B2E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A362444C44100819B2E /* APIClient.swift */; };
+		576E1A392444C49C00819B2E /* WebAPIRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */; };
+		576E1A3B2444C5E400819B2E /* Dictionary+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,9 +72,15 @@
 		5760DBCC244303370085BD04 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		5760DBCF244308570085BD04 /* InputFromTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFromTextViewController.swift; sourceTree = "<group>"; };
 		5760DBD12443086B0085BD04 /* InputFromTextViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputFromTextViewController.storyboard; sourceTree = "<group>"; };
+		576499D824472FE10088B6D6 /* ConvertRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertRequest.swift; sourceTree = "<group>"; };
+		576499DA244731C00088B6D6 /* ConvertAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertAPI.swift; sourceTree = "<group>"; };
+		576499DC244731EB0088B6D6 /* ConvertResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponse.swift; sourceTree = "<group>"; };
 		576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Instance.swift"; sourceTree = "<group>"; };
 		576E1A202443449800819B2E /* GetClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClassName.swift; sourceTree = "<group>"; };
 		576E1A2224434E2300819B2E /* PresentationLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLayout.swift; sourceTree = "<group>"; };
+		576E1A362444C44100819B2E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIRequestProtocol.swift; sourceTree = "<group>"; };
+		576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dictionary+JSON.swift"; path = "RubiMaker/Utilities/Dictionary+JSON.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +137,7 @@
 		5760DB93244300DA0085BD04 /* RubiMaker */ = {
 			isa = PBXGroup;
 			children = (
+				576499DE244744AD0088B6D6 /* Modules */,
 				576E1A1F2443447C00819B2E /* Utilities */,
 				5760DBD32443086F0085BD04 /* InputFromText */,
 				5760DBC62443026E0085BD04 /* History */,
@@ -192,9 +205,20 @@
 			path = InputFromText;
 			sourceTree = "<group>";
 		};
+		576499DE244744AD0088B6D6 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				576499DA244731C00088B6D6 /* ConvertAPI.swift */,
+				576499D824472FE10088B6D6 /* ConvertRequest.swift */,
+				576499DC244731EB0088B6D6 /* ConvertResponse.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		576E1A1C24430D1A00819B2E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */,
 				576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */,
 			);
 			path = Extension;
@@ -205,6 +229,8 @@
 			children = (
 				576E1A202443449800819B2E /* GetClassName.swift */,
 				576E1A2224434E2300819B2E /* PresentationLayout.swift */,
+				576E1A362444C44100819B2E /* APIClient.swift */,
+				576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -361,9 +387,15 @@
 				5760DBD0244308570085BD04 /* InputFromTextViewController.swift in Sources */,
 				5760DBCD244303370085BD04 /* HistoryTableViewCell.swift in Sources */,
 				576E1A212443449800819B2E /* GetClassName.swift in Sources */,
+				576499D924472FE10088B6D6 /* ConvertRequest.swift in Sources */,
+				576499DB244731C00088B6D6 /* ConvertAPI.swift in Sources */,
 				576E1A2324434E2300819B2E /* PresentationLayout.swift in Sources */,
+				576499DD244731EB0088B6D6 /* ConvertResponse.swift in Sources */,
 				5760DB97244300DA0085BD04 /* SceneDelegate.swift in Sources */,
+				576E1A392444C49C00819B2E /* WebAPIRequestProtocol.swift in Sources */,
 				576E1A1E24430D4600819B2E /* UIStoryboard+Instance.swift in Sources */,
+				576E1A372444C44100819B2E /* APIClient.swift in Sources */,
+				576E1A3B2444C5E400819B2E /* Dictionary+JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
