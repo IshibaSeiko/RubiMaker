@@ -7,18 +7,44 @@
 //
 
 import UIKit
+import PanModal
 
-final class InputFromTextViewController: UIViewController {
+final class InputFromTextViewController: UIViewController, PanModalPresentable {
+    var panScrollable: UIScrollView?
 
     // MARK: - IBOutlet
     @IBOutlet private weak var inputTextView: UITextView!
     @IBOutlet private weak var convertedTextView: UITextView!
     @IBOutlet private weak var convertButton: UIButton!
 
+    var hasLoaded = false
+    var shortFormHeight: PanModalHeight {
+        if hasLoaded {
+            return .contentHeight(200)
+        }
+        return .maxHeight
+    }
+
+    var allowsDragToDismiss: Bool {
+        return false
+    }
+
+    var allowsTapToDismiss: Bool {
+        return false
+    }
+
+    var panModalBackgroundColor: UIColor {
+        return .clear
+    }
+
+    var isUserInteractionEnabled: Bool {
+        return false
+    }
+
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        hasLoaded = true
     }
 }
 
