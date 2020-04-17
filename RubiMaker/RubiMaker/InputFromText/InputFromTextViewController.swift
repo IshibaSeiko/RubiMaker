@@ -83,7 +83,10 @@ extension InputFromTextViewController: ReturnCodeResult {
         case .loading:
             break
         case .success(let result):
-            break
+            guard let convertedData = result as? ConvertResponse else {
+                return
+            }
+            convertedTextView.text = convertedData.converted
         case .decodeError:
             break
         case .failure(let error):
