@@ -37,14 +37,34 @@ final class InputFromTextViewController: UIViewController, PanModalPresentable {
         return .clear
     }
 
-    var isUserInteractionEnabled: Bool {
-        return false
-    }
-
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         hasLoaded = true
+        inputTextView.delegate = self
+        convertedTextView.isEditable = false
+    }
+
+    func willTransition(to state: PanModalPresentationController.PresentationState) {
+        switch state {
+        case .longForm:
+            inputTextView.becomeFirstResponder()
+        case .shortForm:
+            inputTextView.endEditing(true)
+        }
+    }
+}
+
+extension InputFromTextViewController: UITextViewDelegate {
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        hasLoaded = false
+        panModalTransition(to: .longForm)
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        hasLoaded = true
+        panModalTransition(to: .shortForm)
     }
 }
 
