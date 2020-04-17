@@ -16,7 +16,7 @@ final class InputFromTextViewController: UIViewController, PanModalPresentable {
     @IBOutlet private weak var convertedTextView: UITextView!
     @IBOutlet private weak var convertButton: UIButton!
 
-    // MARK: - Property
+    // MARK: - PanModal Property
     var panScrollable: UIScrollView?
     var hasLoaded = false
     var shortFormHeight: PanModalHeight {
@@ -38,7 +38,8 @@ final class InputFromTextViewController: UIViewController, PanModalPresentable {
         return .clear
     }
 
-    let convertAPI = ConvertAPI()
+    // MARK: - Private Property
+    private let convertAPI = ConvertAPI()
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -49,12 +50,15 @@ final class InputFromTextViewController: UIViewController, PanModalPresentable {
         convertAPI.returnCodeResult = self
     }
 
-    // IBAction
+    // MARK: - IBAction
     @IBAction func didTapConvertButton(_ sender: UIButton) {
         inputTextView.endEditing(true)
         convertAPI.convert(inputTextView.text)
     }
+}
 
+// MARK: - PanModal Method
+extension InputFromTextViewController {
     func willTransition(to state: PanModalPresentationController.PresentationState) {
         switch state {
         case .longForm:
@@ -65,6 +69,7 @@ final class InputFromTextViewController: UIViewController, PanModalPresentable {
     }
 }
 
+// MARK: - UITextViewDelegate
 extension InputFromTextViewController: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -77,6 +82,7 @@ extension InputFromTextViewController: UITextViewDelegate {
     }
 }
 
+// MARK: - ReturnCodeResult
 extension InputFromTextViewController: ReturnCodeResult {
     func returnCodeResult(returnCode: IndividualResult) {
         switch returnCode {
@@ -95,8 +101,9 @@ extension InputFromTextViewController: ReturnCodeResult {
     }
 }
 
+// MARK: - class Method
 extension InputFromTextViewController {
-    class func instance() -> InputFromTextViewController {
+    static func instance() -> InputFromTextViewController {
         guard let viewController: InputFromTextViewController =
             UIStoryboard.viewController(
                 storyboardName: InputFromTextViewController.className,
