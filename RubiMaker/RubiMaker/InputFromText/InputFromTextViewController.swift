@@ -10,13 +10,14 @@ import UIKit
 import PanModal
 
 final class InputFromTextViewController: UIViewController, PanModalPresentable {
-    var panScrollable: UIScrollView?
 
     // MARK: - IBOutlet
     @IBOutlet private weak var inputTextView: UITextView!
     @IBOutlet private weak var convertedTextView: UITextView!
     @IBOutlet private weak var convertButton: UIButton!
 
+    // MARK: - Property
+    var panScrollable: UIScrollView?
     var hasLoaded = false
     var shortFormHeight: PanModalHeight {
         if hasLoaded {
@@ -37,12 +38,21 @@ final class InputFromTextViewController: UIViewController, PanModalPresentable {
         return .clear
     }
 
+    let convertAPI = ConvertAPI()
+
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         hasLoaded = true
         inputTextView.delegate = self
         convertedTextView.isEditable = false
+        convertAPI.returnCodeResult = self
+    }
+
+    // IBAction
+    @IBAction func didTapConvertButton(_ sender: UIButton) {
+        inputTextView.endEditing(true)
+        convertAPI.convert(inputTextView.text)
     }
 
     func willTransition(to state: PanModalPresentationController.PresentationState) {
@@ -64,7 +74,21 @@ extension InputFromTextViewController: UITextViewDelegate {
 
     func textViewDidEndEditing(_ textView: UITextView) {
         hasLoaded = true
-        panModalTransition(to: .shortForm)
+    }
+}
+
+extension InputFromTextViewController: ReturnCodeResult {
+    func returnCodeResult(returnCode: IndividualResult) {
+        switch returnCode {
+        case .loading:
+            break
+        case .success(let result):
+            break
+        case .decodeError:
+            break
+        case .failure(let error):
+            break
+        }
     }
 }
 
