@@ -8,13 +8,21 @@
 
 import UIKit
 
+protocol InputFromTextViewControllerDelegate: AnyObject {
+    func textViewDidBeginEditing()
+}
+
 final class InputFromTextViewController: UIViewController {
-    var panScrollable: UIScrollView?
 
     // MARK: - IBOutlet
-    @IBOutlet private weak var inputTextView: UITextView!
+    @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet private weak var convertedTextView: UITextView!
+    @IBOutlet weak var convertButtonBackView: UIView!
     @IBOutlet private weak var convertButton: UIButton!
+    @IBOutlet private weak var bottomView: UIView!
+
+    // MARK: - InputFromTextViewControllerDelegate
+    weak var delegate: InputFromTextViewControllerDelegate?
 
     // MARK: - Private Property
     private let convertAPI = ConvertAPI()
@@ -25,12 +33,58 @@ final class InputFromTextViewController: UIViewController {
         inputTextView.delegate = self
         convertedTextView.isEditable = false
         convertAPI.returnCodeResult = self
+        convertButton.isEnabled = false
+        convertButton.alpha = 0.5
+        setInterface()
     }
 
     // MARK: - IBAction
     @IBAction func didTapConvertButton(_ sender: UIButton) {
-        inputTextView.endEditing(true)
-        convertAPI.convert(inputTextView.text)
+        sender.isSelected = !sender.isSelected
+        switch sender.isSelected {
+        case true:
+            inputTextView.endEditing(true)
+            convertAPI.convert(inputTextView.text)
+        case false:
+            inputTextView.text = ""
+            convertedTextView.text = ""
+            convertButton.isEnabled = false
+            convertButton.alpha = 0.5
+            inputTextView.becomeFirstResponder()
+        }
+
+    }
+}
+
+// MARK: - Instance Method
+extension InputFromTextViewController {
+    func isFull(_ isFull: Bool) {
+        convertButtonBackView.isHidden = !isFull
+        convertedTextView.isHidden = !isFull
+        bottomView.isHidden = isFull
+    }
+}
+
+// MARK: - Private Method
+extension InputFromTextViewController {
+    private func setInterface() {
+        inputTextView.layer.borderWidth = 0.5
+        inputTextView.layer.borderColor = UIColor.gray.cgColor
+        inputTextView.layer.cornerRadius = 5.0
+
+        convertedTextView.layer.borderWidth = 0.5
+        convertedTextView.layer.borderColor = UIColor.gray.cgColor
+        convertedTextView.layer.cornerRadius = 5.0
+
+        convertButton.layer.borderWidth = 0.5
+        convertButton.layer.borderColor = UIColor.gray.cgColor
+        convertButton.layer.cornerRadius = 15.0
+
+        convertButton.setTitle("Convert", for: .normal)
+        convertButton.setTitle("Reset", for: .selected)
+
+        bottomView.topAnchor.constraint(equalTo: inputTextView.topAnchor, constant: 50).isActive = true
+        isFull(false)
     }
 }
 
@@ -38,9 +92,19 @@ final class InputFromTextViewController: UIViewController {
 extension InputFromTextViewController: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
+        delegate?.textViewDidBeginEditing()
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        if convertButton.isSelected {
+            convertButton.isSelected = false
+            convertedTextView.text = ""
+        }
+        convertButton.isEnabled = !inputTextView.text.isEmpty
+        convertButton.alpha = convertButton.isEnabled ? 1 : 0.5
     }
 }
 
