@@ -9,9 +9,10 @@
 import UIKit
 
 final class ConvertAPI {
-    func convert(_ sentence: String, type: ConvertType = .hiragana) {
 
-        weak var returnCodeResult: ReturnCodeResult?
+    weak var returnCodeResult: ReturnCodeResult?
+
+    func convert(_ sentence: String, type: ConvertType = .hiragana) {
         let request = ConvertRequest(sentence, type: type)
         returnCodeResult?.returnCodeResult(returnCode: .loading)
 
@@ -26,13 +27,13 @@ final class ConvertAPI {
                 }
                 do {
                     let decodedResult = try decoder.decode(ConvertResponse.self, from: result)
-                    returnCodeResult?.returnCodeResult(returnCode: .success(decodedResult))
+                    self.returnCodeResult?.returnCodeResult(returnCode: .success(decodedResult))
                 } catch {
-                    returnCodeResult?.returnCodeResult(returnCode: .decodeError)
+                    self.returnCodeResult?.returnCodeResult(returnCode: .decodeError)
                 }
 
             case .failure(let error):
-                returnCodeResult?.returnCodeResult(returnCode: .failure(error))
+                self.returnCodeResult?.returnCodeResult(returnCode: .failure(error))
                 break
             }
         }

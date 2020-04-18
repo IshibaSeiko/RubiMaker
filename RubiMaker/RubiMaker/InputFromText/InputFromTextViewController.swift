@@ -16,14 +16,56 @@ final class InputFromTextViewController: UIViewController {
     @IBOutlet private weak var convertedTextView: UITextView!
     @IBOutlet private weak var convertButton: UIButton!
 
+    // MARK: - Private Property
+    private let convertAPI = ConvertAPI()
+
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        inputTextView.delegate = self
+        convertedTextView.isEditable = false
+        convertAPI.returnCodeResult = self
+    }
+
+    // MARK: - IBAction
+    @IBAction func didTapConvertButton(_ sender: UIButton) {
+        inputTextView.endEditing(true)
+        convertAPI.convert(inputTextView.text)
     }
 }
 
+// MARK: - UITextViewDelegate
+extension InputFromTextViewController: UITextViewDelegate {
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+    }
+}
+
+// MARK: - ReturnCodeResult
+extension InputFromTextViewController: ReturnCodeResult {
+    func returnCodeResult(returnCode: IndividualResult) {
+        switch returnCode {
+        case .loading:
+            break
+        case .success(let result):
+            guard let convertedData = result as? ConvertResponse else {
+                return
+            }
+            convertedTextView.text = convertedData.converted
+        case .decodeError:
+            break
+        case .failure(let error):
+            break
+        }
+    }
+}
+
+// MARK: - class Method
 extension InputFromTextViewController {
-    class func instance() -> InputFromTextViewController {
+    static func instance() -> InputFromTextViewController {
         guard let viewController: InputFromTextViewController =
             UIStoryboard.viewController(
                 storyboardName: InputFromTextViewController.className,

@@ -11,18 +11,25 @@ import FloatingPanel
 
 final class HistoryViewController: UIViewController {
 
-    // MARK: IBOutlet
+    // MARK: - IBOutlet
     @IBOutlet private weak var historyTableView: UITableView!
 
-    // MARK: Property
-    var inputFromTextViewController = InputFromTextViewController.instance()
+    // MARK: - Private Property
+    private var inputFromTextViewController = InputFromTextViewController.instance()
     let floatingPanelController = FloatingPanelController()
 
-    // MARK: LifeCycle
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        floatingPanelController.delegate = self
         floatingPanelController.set(contentViewController: inputFromTextViewController)
         floatingPanelController.addPanel(toParent: self, animated: true)
+    }
+}
+
+// MARK: - FloatingPanelControllerDelegate
+extension HistoryViewController: FloatingPanelControllerDelegate {
+    func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
+        return FloatingPanelLandscapeLayout()
     }
 }

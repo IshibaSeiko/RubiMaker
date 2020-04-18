@@ -9,7 +9,7 @@
 import UIKit
 
 struct ConvertResponse: Decodable {
-    let request_id: String
-    let output_type: String
+    let requestId: String
+    let outputType: String
     let converted: String
 }
