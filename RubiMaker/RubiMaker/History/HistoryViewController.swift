@@ -28,9 +28,11 @@ final class HistoryViewController: UIViewController {
     }
 }
 
+// MARK: - InputFromTextViewControllerDelegate
 extension HistoryViewController: InputFromTextViewControllerDelegate {
     func textViewDidBeginEditing() {
         floatingPanelController.move(to: .full, animated: true)
+        inputFromTextViewController.isFull(true)
     }
 }
 
@@ -43,10 +45,11 @@ extension HistoryViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
         switch targetPosition {
         case .full:
-            break
+            inputFromTextViewController.isFull(true)
 
         case .tip:
             inputFromTextViewController.inputTextView.endEditing(true)
+            inputFromTextViewController.isFull(false)
 
         case .half, .hidden:
         break

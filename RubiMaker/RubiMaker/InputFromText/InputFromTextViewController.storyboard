@@ -16,18 +16,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EPZ-HZ-oJO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="786"/>
+                                <rect key="frame" x="8" y="60" width="398" height="820"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kLr-Z1-wQT">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="363"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="304"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eea-jo-z7m">
-                                        <rect key="frame" x="0.0" y="363" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="304" width="398" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="toQ-fW-aVv"/>
                                         </constraints>
@@ -37,29 +36,34 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V3H-5z-adr">
-                                        <rect key="frame" x="0.0" y="423" width="414" height="363"/>
+                                        <rect key="frame" x="0.0" y="364" width="398" height="320"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="320" id="ypb-Cq-9eO"/>
+                                        </constraints>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="398" placeholderIntrinsicHeight="136" translatesAutoresizingMaskIntoConstraints="NO" id="7TQ-ed-yLb">
+                                        <rect key="frame" x="0.0" y="684" width="398" height="136"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="V3H-5z-adr" firstAttribute="height" secondItem="kLr-Z1-wQT" secondAttribute="height" id="LLC-eR-SfS"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="EPZ-HZ-oJO" firstAttribute="top" secondItem="9fL-MJ-X0T" secondAttribute="top" id="3f4-jy-Rua"/>
-                            <constraint firstItem="EPZ-HZ-oJO" firstAttribute="leading" secondItem="9fL-MJ-X0T" secondAttribute="leading" id="CRG-6D-izL"/>
-                            <constraint firstItem="9fL-MJ-X0T" firstAttribute="trailing" secondItem="EPZ-HZ-oJO" secondAttribute="trailing" id="VJM-fy-hIj"/>
-                            <constraint firstAttribute="bottom" secondItem="EPZ-HZ-oJO" secondAttribute="bottom" constant="66" id="VbI-a8-oKn"/>
+                            <constraint firstAttribute="bottom" secondItem="EPZ-HZ-oJO" secondAttribute="bottom" constant="16" id="CEL-1b-4OV"/>
+                            <constraint firstItem="EPZ-HZ-oJO" firstAttribute="leading" secondItem="9fL-MJ-X0T" secondAttribute="leading" constant="8" id="CRG-6D-izL"/>
+                            <constraint firstItem="EPZ-HZ-oJO" firstAttribute="top" secondItem="9fL-MJ-X0T" secondAttribute="top" constant="16" id="OKc-VU-nT9"/>
+                            <constraint firstItem="9fL-MJ-X0T" firstAttribute="trailing" secondItem="EPZ-HZ-oJO" secondAttribute="trailing" constant="8" id="VJM-fy-hIj"/>
+                            <constraint firstItem="EPZ-HZ-oJO" firstAttribute="centerX" secondItem="VRI-JE-6TQ" secondAttribute="centerX" id="xky-pQ-NQC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9fL-MJ-X0T"/>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="7TQ-ed-yLb" id="T05-XX-XvV"/>
                         <outlet property="convertButton" destination="eea-jo-z7m" id="VrQ-gY-gsu"/>
                         <outlet property="convertedTextView" destination="V3H-5z-adr" id="UKz-KS-5tn"/>
                         <outlet property="inputTextView" destination="kLr-Z1-wQT" id="zk3-dC-Hhu"/>

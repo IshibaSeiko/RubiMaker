@@ -18,6 +18,7 @@ final class InputFromTextViewController: UIViewController {
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet private weak var convertedTextView: UITextView!
     @IBOutlet private weak var convertButton: UIButton!
+    @IBOutlet private weak var bottomView: UIView!
 
     // MARK: - InputFromTextViewControllerDelegate
     weak var delegate: InputFromTextViewControllerDelegate?
@@ -31,12 +32,23 @@ final class InputFromTextViewController: UIViewController {
         inputTextView.delegate = self
         convertedTextView.isEditable = false
         convertAPI.returnCodeResult = self
+        bottomView.topAnchor.constraint(equalTo: inputTextView.topAnchor, constant: 50).isActive = true
+        isFull(false)
     }
 
     // MARK: - IBAction
     @IBAction func didTapConvertButton(_ sender: UIButton) {
         inputTextView.endEditing(true)
         convertAPI.convert(inputTextView.text)
+    }
+}
+
+// MARK: - Instance Method
+extension InputFromTextViewController {
+    func isFull(_ isFull: Bool) {
+        convertButton.isHidden = !isFull
+        convertedTextView.isHidden = !isFull
+        bottomView.isHidden = isFull
     }
 }
 
