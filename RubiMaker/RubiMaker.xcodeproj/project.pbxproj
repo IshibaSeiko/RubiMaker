@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		572B5B332449E960008D9EC2 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 572B5B322449E960008D9EC2 /* FloatingPanel */; };
 		572B5B35244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */; };
+		572B5B39244B098B008D9EC2 /* ConvertEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B38244B098B008D9EC2 /* ConvertEntity.swift */; };
+		572B5B3B244B0C08008D9EC2 /* RealmDaoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B3A244B0C08008D9EC2 /* RealmDaoHelper.swift */; };
+		572B5B3D244B0D86008D9EC2 /* RealmInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B3C244B0D86008D9EC2 /* RealmInitializer.swift */; };
+		572B5B3F244B0DD1008D9EC2 /* RealmInitializeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B3E244B0DD1008D9EC2 /* RealmInitializeService.swift */; };
+		572B5B41244B0E8F008D9EC2 /* HistoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B40244B0E8F008D9EC2 /* HistoryDao.swift */; };
+		572B5B43244B1B95008D9EC2 /* HistoryListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B42244B1B95008D9EC2 /* HistoryListProvider.swift */; };
 		5760DB95244300DA0085BD04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5760DB94244300DA0085BD04 /* AppDelegate.swift */; };
 		5760DB97244300DA0085BD04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5760DB96244300DA0085BD04 /* SceneDelegate.swift */; };
 		5760DB9E244300E10085BD04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5760DB9D244300E10085BD04 /* Assets.xcassets */; };
@@ -58,6 +64,12 @@
 
 /* Begin PBXFileReference section */
 		572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelLandscapeLayout.swift; sourceTree = "<group>"; };
+		572B5B38244B098B008D9EC2 /* ConvertEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertEntity.swift; sourceTree = "<group>"; };
+		572B5B3A244B0C08008D9EC2 /* RealmDaoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDaoHelper.swift; sourceTree = "<group>"; };
+		572B5B3C244B0D86008D9EC2 /* RealmInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInitializer.swift; sourceTree = "<group>"; };
+		572B5B3E244B0DD1008D9EC2 /* RealmInitializeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInitializeService.swift; sourceTree = "<group>"; };
+		572B5B40244B0E8F008D9EC2 /* HistoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDao.swift; sourceTree = "<group>"; };
+		572B5B42244B1B95008D9EC2 /* HistoryListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListProvider.swift; sourceTree = "<group>"; };
 		5760DB91244300DA0085BD04 /* RubiMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RubiMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5760DB94244300DA0085BD04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5760DB96244300DA0085BD04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,8 +208,11 @@
 			children = (
 				5760DBC7244302B30085BD04 /* HistoryViewController.swift */,
 				5760DBC9244302C50085BD04 /* HistoryViewController.storyboard */,
+				572B5B42244B1B95008D9EC2 /* HistoryListProvider.swift */,
 				5760DBCB244303370085BD04 /* HistoryTableViewCell.swift */,
 				5760DBCC244303370085BD04 /* HistoryTableViewCell.xib */,
+				572B5B38244B098B008D9EC2 /* ConvertEntity.swift */,
+				572B5B40244B0E8F008D9EC2 /* HistoryDao.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -239,6 +254,9 @@
 				576E1A362444C44100819B2E /* APIClient.swift */,
 				576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */,
 				572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */,
+				572B5B3A244B0C08008D9EC2 /* RealmDaoHelper.swift */,
+				572B5B3C244B0D86008D9EC2 /* RealmInitializer.swift */,
+				572B5B3E244B0DD1008D9EC2 /* RealmInitializeService.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -399,15 +417,21 @@
 				576E1A212443449800819B2E /* GetClassName.swift in Sources */,
 				576499D924472FE10088B6D6 /* ConvertRequest.swift in Sources */,
 				576499DB244731C00088B6D6 /* ConvertAPI.swift in Sources */,
+				572B5B3F244B0DD1008D9EC2 /* RealmInitializeService.swift in Sources */,
 				572B5B35244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift in Sources */,
 				576E1A2324434E2300819B2E /* PresentationLayout.swift in Sources */,
 				576499E02447460A0088B6D6 /* ReturnCodeResult.swift in Sources */,
 				576499DD244731EB0088B6D6 /* ConvertResponse.swift in Sources */,
 				5760DB97244300DA0085BD04 /* SceneDelegate.swift in Sources */,
+				572B5B43244B1B95008D9EC2 /* HistoryListProvider.swift in Sources */,
 				576E1A392444C49C00819B2E /* WebAPIRequestProtocol.swift in Sources */,
 				576E1A1E24430D4600819B2E /* UIStoryboard+Instance.swift in Sources */,
+				572B5B3B244B0C08008D9EC2 /* RealmDaoHelper.swift in Sources */,
+				572B5B39244B098B008D9EC2 /* ConvertEntity.swift in Sources */,
 				576E1A372444C44100819B2E /* APIClient.swift in Sources */,
 				576E1A3B2444C5E400819B2E /* Dictionary+JSON.swift in Sources */,
+				572B5B3D244B0D86008D9EC2 /* RealmInitializer.swift in Sources */,
+				572B5B41244B0E8F008D9EC2 /* HistoryDao.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

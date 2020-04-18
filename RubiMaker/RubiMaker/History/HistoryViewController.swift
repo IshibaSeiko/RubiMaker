@@ -16,15 +16,31 @@ final class HistoryViewController: UIViewController {
 
     // MARK: - Private Property
     private var inputFromTextViewController = InputFromTextViewController.instance()
-    let floatingPanelController = FloatingPanelController()
+    private let floatingPanelController = FloatingPanelController()
+    private let historyListProvider = HistoryListProvider()
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        historyTableView.register(UINib(nibName: HistoryTableViewCell.className, bundle: nil), forCellReuseIdentifier: HistoryTableViewCell.className)
+        historyTableView.tableFooterView = UIView()
+        historyTableView.dataSource = historyListProvider
+        historyListProvider.delegate = self
+        historyListProvider.set(HistoryDao.findUnDeleteObjects())
+        historyTableView.reloadData()
+
         inputFromTextViewController.delegate = self
         floatingPanelController.delegate = self
         floatingPanelController.set(contentViewController: inputFromTextViewController)
         floatingPanelController.addPanel(toParent: self, animated: true)
+    }
+}
+
+extension HistoryViewController: HistoryListProviderProtocol {
+    func historyStatus(_ newElement: ConvertEntity) {
+        HistoryDao.update(object: newElement)
+        historyTableView.reloadData()
     }
 }
 
@@ -33,6 +49,11 @@ extension HistoryViewController: InputFromTextViewControllerDelegate {
     func textViewDidBeginEditing() {
         floatingPanelController.move(to: .full, animated: true)
         inputFromTextViewController.isFull(true)
+    }
+
+    func finishConvert() {
+        historyListProvider.set(HistoryDao.findUnDeleteObjects())
+        historyTableView.reloadData()
     }
 }
 

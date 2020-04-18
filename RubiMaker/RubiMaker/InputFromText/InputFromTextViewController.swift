@@ -10,6 +10,7 @@ import UIKit
 
 protocol InputFromTextViewControllerDelegate: AnyObject {
     func textViewDidBeginEditing()
+    func finishConvert()
 }
 
 final class InputFromTextViewController: UIViewController {
@@ -119,6 +120,9 @@ extension InputFromTextViewController: ReturnCodeResult {
                 return
             }
             convertedTextView.text = convertedData.converted
+            HistoryDao.update(object: ConvertEntity(input: inputTextView.text,
+                                                    convertResponse: convertedData))
+            delegate?.finishConvert()
         case .decodeError:
             break
         case .failure(let error):
