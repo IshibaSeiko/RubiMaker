@@ -8,8 +8,12 @@
 
 import Foundation
 
-final class ConvertAPI {
+protocol ConvertAPIModel: AnyObject {
+    var returnCodeResult: ReturnCodeResult? { get set }
+    func convert(_ sentence: String, type: ConvertType)
+}
 
+final class ConvertAPI: ConvertAPIModel {
     weak var returnCodeResult: ReturnCodeResult?
 
     func convert(_ sentence: String, type: ConvertType = .hiragana) {
