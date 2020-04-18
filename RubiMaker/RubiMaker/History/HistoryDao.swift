@@ -31,6 +31,12 @@ final class HistoryDao {
         return object
     }
 
+    static func findUnDeleteObjects() -> [ConvertEntity] {
+        let predicate = NSPredicate(format: "deleteFlg = false")
+        let objects = dao.filter(predicate: predicate)
+        return Array(objects)
+    }
+
     static func findFirst() -> ConvertEntity? {
         guard let object = dao.findFirst() else {
             return nil
