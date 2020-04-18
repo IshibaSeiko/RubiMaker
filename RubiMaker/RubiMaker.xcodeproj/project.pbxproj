@@ -95,7 +95,7 @@
 		576E1A202443449800819B2E /* GetClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClassName.swift; sourceTree = "<group>"; };
 		576E1A362444C44100819B2E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIRequestProtocol.swift; sourceTree = "<group>"; };
-		576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dictionary+JSON.swift"; path = "RubiMaker/Utilities/Dictionary+JSON.swift"; sourceTree = SOURCE_ROOT; };
+		576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dictionary+JSON.swift"; path = "RubiMaker/Extension/Foundation/Dictionary+JSON.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +130,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		572B5B44244B5369008D9EC2 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		572B5B45244B5383008D9EC2 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		572B5B47244B53B2008D9EC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				572B5B42244B1B95008D9EC2 /* HistoryListProvider.swift */,
+				572B5B38244B098B008D9EC2 /* ConvertEntity.swift */,
+				572B5B40244B0E8F008D9EC2 /* HistoryDao.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		572B5B48244B53C8008D9EC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5760DBCB244303370085BD04 /* HistoryTableViewCell.swift */,
+				5760DBCC244303370085BD04 /* HistoryTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		572B5B49244B53ED008D9EC2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5760DBC7244302B30085BD04 /* HistoryViewController.swift */,
+				5760DBC9244302C50085BD04 /* HistoryViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		572B5B4A244B542C008D9EC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				576499D824472FE10088B6D6 /* ConvertRequest.swift */,
+				576499DC244731EB0088B6D6 /* ConvertResponse.swift */,
+				576499DA244731C00088B6D6 /* ConvertAPI.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		572B5B4B244B543B008D9EC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		572B5B4C244B5444008D9EC2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5760DBCF244308570085BD04 /* InputFromTextViewController.swift */,
+				5760DBD12443086B0085BD04 /* InputFromTextViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		572B5B4D244B5482008D9EC2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				576E1A362444C44100819B2E /* APIClient.swift */,
+				572B5B3A244B0C08008D9EC2 /* RealmDaoHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		5760DB88244300DA0085BD04 = {
 			isa = PBXGroup;
 			children = (
@@ -204,13 +283,9 @@
 		5760DBC62443026E0085BD04 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				5760DBC7244302B30085BD04 /* HistoryViewController.swift */,
-				5760DBC9244302C50085BD04 /* HistoryViewController.storyboard */,
-				572B5B42244B1B95008D9EC2 /* HistoryListProvider.swift */,
-				5760DBCB244303370085BD04 /* HistoryTableViewCell.swift */,
-				5760DBCC244303370085BD04 /* HistoryTableViewCell.xib */,
-				572B5B38244B098B008D9EC2 /* ConvertEntity.swift */,
-				572B5B40244B0E8F008D9EC2 /* HistoryDao.swift */,
+				572B5B47244B53B2008D9EC2 /* Model */,
+				572B5B48244B53C8008D9EC2 /* View */,
+				572B5B49244B53ED008D9EC2 /* Controller */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -218,8 +293,9 @@
 		5760DBD32443086F0085BD04 /* InputFromText */ = {
 			isa = PBXGroup;
 			children = (
-				5760DBCF244308570085BD04 /* InputFromTextViewController.swift */,
-				5760DBD12443086B0085BD04 /* InputFromTextViewController.storyboard */,
+				572B5B4A244B542C008D9EC2 /* Model */,
+				572B5B4B244B543B008D9EC2 /* View */,
+				572B5B4C244B5444008D9EC2 /* Controller */,
 			);
 			path = InputFromText;
 			sourceTree = "<group>";
@@ -227,10 +303,10 @@
 		576499DE244744AD0088B6D6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				576499DA244731C00088B6D6 /* ConvertAPI.swift */,
+				576E1A202443449800819B2E /* GetClassName.swift */,
 				576499DF2447460A0088B6D6 /* ReturnCodeResult.swift */,
-				576499D824472FE10088B6D6 /* ConvertRequest.swift */,
-				576499DC244731EB0088B6D6 /* ConvertResponse.swift */,
+				576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */,
+				572B5B3E244B0DD1008D9EC2 /* RealmInitializeService.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -238,8 +314,8 @@
 		576E1A1C24430D1A00819B2E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */,
-				576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */,
+				572B5B44244B5369008D9EC2 /* Foundation */,
+				572B5B45244B5383008D9EC2 /* UIKit */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -247,13 +323,9 @@
 		576E1A1F2443447C00819B2E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				576E1A202443449800819B2E /* GetClassName.swift */,
-				576E1A362444C44100819B2E /* APIClient.swift */,
-				576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */,
+				572B5B4D244B5482008D9EC2 /* Helper */,
 				572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */,
-				572B5B3A244B0C08008D9EC2 /* RealmDaoHelper.swift */,
 				572B5B3C244B0D86008D9EC2 /* RealmInitializer.swift */,
-				572B5B3E244B0DD1008D9EC2 /* RealmInitializeService.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
