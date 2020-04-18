@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PanModal
+import FloatingPanel
 
 final class HistoryViewController: UIViewController {
 
@@ -16,11 +16,13 @@ final class HistoryViewController: UIViewController {
 
     // MARK: Property
     var inputFromTextViewController = InputFromTextViewController.instance()
+    let floatingPanelController = FloatingPanelController()
 
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presentPanModal(inputFromTextViewController)
+        floatingPanelController.set(contentViewController: inputFromTextViewController)
+        floatingPanelController.addPanel(toParent: self, animated: true)
     }
 }
