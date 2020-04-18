@@ -11,37 +11,37 @@ import UIKit
 import RealmSwift
 
 final class HistoryDao {
-    
+
     static let dao = RealmDaoHelper<ConvertEntity>()
-    
+
     static func add(objects: [ConvertEntity]) {
-        
+
         deleteAll()
         dao.add(objects: objects)
     }
-    
+
     static func deleteAll() {
         dao.deleteAll()
     }
-    
+
     static func findByID(id: Int) -> ConvertEntity? {
         guard let object = dao.findFirst(key: id as AnyObject) else {
             return nil
         }
         return object
     }
-    
+
     static func findFirst() -> ConvertEntity? {
         guard let object = dao.findFirst() else {
             return nil
         }
         return object
     }
-    
+
     static func findAll() -> [ConvertEntity] {
         return Array(dao.findAll())
     }
-    
+
     static func update(object: ConvertEntity) {
         dao.update(object: object)
     }
