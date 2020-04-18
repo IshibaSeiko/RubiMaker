@@ -15,7 +15,7 @@ final class HistoryViewController: UIViewController {
     @IBOutlet private weak var historyTableView: UITableView!
 
     // MARK: - Private Property
-    private var inputFromTextViewController = InputFromTextViewController.instance()
+    private var inputFromTextViewController = InputFromTextViewController.instance(convertAPI: ConvertAPI())
     private let floatingPanelController = FloatingPanelController()
     private let historyListProvider = HistoryListProvider()
 

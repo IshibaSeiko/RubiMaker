@@ -26,7 +26,7 @@ final class InputFromTextViewController: UIViewController {
     weak var delegate: InputFromTextViewControllerDelegate?
 
     // MARK: - Private Property
-    private let convertAPI = ConvertAPI()
+    private var convertAPI: ConvertAPIModel!
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ final class InputFromTextViewController: UIViewController {
         switch sender.isSelected {
         case true:
             inputTextView.endEditing(true)
-            convertAPI.convert(inputTextView.text)
+            convertAPI.convert(inputTextView.text, type: .hiragana)
         case false:
             inputTextView.text = ""
             convertedTextView.text = ""
@@ -133,13 +133,14 @@ extension InputFromTextViewController: ReturnCodeResult {
 
 // MARK: - class Method
 extension InputFromTextViewController {
-    static func instance() -> InputFromTextViewController {
+    static func instance(convertAPI: ConvertAPIModel) -> InputFromTextViewController {
         guard let viewController: InputFromTextViewController =
             UIStoryboard.viewController(
                 storyboardName: InputFromTextViewController.className,
                 identifier: InputFromTextViewController.className) else {
                     fatalError("InputFromTextViewController not found.")
         }
+        viewController.convertAPI = convertAPI
         return viewController
     }
 }

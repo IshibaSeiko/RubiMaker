@@ -16,7 +16,7 @@ protocol ConvertAPIModel: AnyObject {
 final class ConvertAPI: ConvertAPIModel {
     weak var returnCodeResult: ReturnCodeResult?
 
-    func convert(_ sentence: String, type: ConvertType = .hiragana) {
+    func convert(_ sentence: String, type: ConvertType) {
         let request = ConvertRequest(sentence, type: type)
         returnCodeResult?.returnCodeResult(returnCode: .loading)
 
