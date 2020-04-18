@@ -119,6 +119,8 @@ extension InputFromTextViewController: ReturnCodeResult {
                 return
             }
             convertedTextView.text = convertedData.converted
+            HistoryDao.update(object: ConvertEntity(input: inputTextView.text,
+                                                    convertResponse: convertedData))
         case .decodeError:
             break
         case .failure(let error):
