@@ -34,4 +34,17 @@ final class ConvertEntity: Object {
         favoriteFlg = false
         deleteFlg = false
     }
+
+    required init(convertEntity: ConvertEntity,
+                  changeFavoriteStatus: Bool = false,
+                  changeDeleteStatus: Bool = false) {
+        super.init()
+        requestId = convertEntity.requestId
+        outputType = convertEntity.outputType
+        self.input = convertEntity.input
+        converted = convertEntity.converted
+        favoriteFlg = changeFavoriteStatus ? !convertEntity.favoriteFlg : convertEntity.favoriteFlg
+        deleteFlg = changeDeleteStatus ? !convertEntity.deleteFlg : convertEntity.deleteFlg
+
+    }
 }
