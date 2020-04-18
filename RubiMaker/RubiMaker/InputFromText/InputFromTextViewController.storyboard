@@ -20,24 +20,33 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kLr-Z1-wQT">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="304"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eea-jo-z7m">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Een-KG-uJp">
                                         <rect key="frame" x="0.0" y="304" width="398" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eea-jo-z7m">
+                                                <rect key="frame" x="99" y="15" width="200" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="DkR-Yy-KEv"/>
+                                                </constraints>
+                                                <state key="normal" title="Convert!"/>
+                                                <connections>
+                                                    <action selector="didTapConvertButton:" destination="fzM-Fc-VcS" eventType="touchUpInside" id="IdM-fc-Kae"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="toQ-fW-aVv"/>
+                                            <constraint firstItem="eea-jo-z7m" firstAttribute="centerY" secondItem="Een-KG-uJp" secondAttribute="centerY" id="0eD-h2-3fn"/>
+                                            <constraint firstAttribute="height" constant="60" id="F5B-DJ-4JD"/>
+                                            <constraint firstItem="eea-jo-z7m" firstAttribute="centerX" secondItem="Een-KG-uJp" secondAttribute="centerX" id="LTD-AF-XfE"/>
                                         </constraints>
-                                        <state key="normal" title="Convert!"/>
-                                        <connections>
-                                            <action selector="didTapConvertButton:" destination="fzM-Fc-VcS" eventType="touchUpInside" id="IdM-fc-Kae"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V3H-5z-adr">
                                         <rect key="frame" x="0.0" y="364" width="398" height="320"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="320" id="ypb-Cq-9eO"/>
                                         </constraints>
@@ -52,7 +61,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="EPZ-HZ-oJO" secondAttribute="bottom" constant="16" id="CEL-1b-4OV"/>
                             <constraint firstItem="EPZ-HZ-oJO" firstAttribute="leading" secondItem="9fL-MJ-X0T" secondAttribute="leading" constant="8" id="CRG-6D-izL"/>
@@ -65,6 +74,7 @@
                     <connections>
                         <outlet property="bottomView" destination="7TQ-ed-yLb" id="T05-XX-XvV"/>
                         <outlet property="convertButton" destination="eea-jo-z7m" id="VrQ-gY-gsu"/>
+                        <outlet property="convertButtonBackView" destination="Een-KG-uJp" id="CYN-9S-QP8"/>
                         <outlet property="convertedTextView" destination="V3H-5z-adr" id="UKz-KS-5tn"/>
                         <outlet property="inputTextView" destination="kLr-Z1-wQT" id="zk3-dC-Hhu"/>
                     </connections>
