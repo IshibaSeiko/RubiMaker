@@ -33,7 +33,6 @@
 		576499E02447460A0088B6D6 /* ReturnCodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576499DF2447460A0088B6D6 /* ReturnCodeResult.swift */; };
 		576E1A1E24430D4600819B2E /* UIStoryboard+Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */; };
 		576E1A212443449800819B2E /* GetClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A202443449800819B2E /* GetClassName.swift */; };
-		576E1A2324434E2300819B2E /* PresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A2224434E2300819B2E /* PresentationLayout.swift */; };
 		576E1A282444BF9C00819B2E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A272444BF9C00819B2E /* Alamofire */; };
 		576E1A2B2444C04700819B2E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A2A2444C04700819B2E /* Realm */; };
 		576E1A2D2444C04700819B2E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 576E1A2C2444C04700819B2E /* RealmSwift */; };
@@ -94,7 +93,6 @@
 		576499DF2447460A0088B6D6 /* ReturnCodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnCodeResult.swift; sourceTree = "<group>"; };
 		576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Instance.swift"; sourceTree = "<group>"; };
 		576E1A202443449800819B2E /* GetClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClassName.swift; sourceTree = "<group>"; };
-		576E1A2224434E2300819B2E /* PresentationLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLayout.swift; sourceTree = "<group>"; };
 		576E1A362444C44100819B2E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIRequestProtocol.swift; sourceTree = "<group>"; };
 		576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dictionary+JSON.swift"; path = "RubiMaker/Utilities/Dictionary+JSON.swift"; sourceTree = SOURCE_ROOT; };
@@ -250,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				576E1A202443449800819B2E /* GetClassName.swift */,
-				576E1A2224434E2300819B2E /* PresentationLayout.swift */,
 				576E1A362444C44100819B2E /* APIClient.swift */,
 				576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */,
 				572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */,
@@ -419,7 +416,6 @@
 				576499DB244731C00088B6D6 /* ConvertAPI.swift in Sources */,
 				572B5B3F244B0DD1008D9EC2 /* RealmInitializeService.swift in Sources */,
 				572B5B35244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift in Sources */,
-				576E1A2324434E2300819B2E /* PresentationLayout.swift in Sources */,
 				576499E02447460A0088B6D6 /* ReturnCodeResult.swift in Sources */,
 				576499DD244731EB0088B6D6 /* ConvertResponse.swift in Sources */,
 				5760DB97244300DA0085BD04 /* SceneDelegate.swift in Sources */,
