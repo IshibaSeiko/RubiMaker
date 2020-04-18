@@ -7,36 +7,14 @@
 //
 
 import UIKit
-import PanModal
 
-final class InputFromTextViewController: UIViewController, PanModalPresentable {
+final class InputFromTextViewController: UIViewController {
+    var panScrollable: UIScrollView?
 
     // MARK: - IBOutlet
     @IBOutlet private weak var inputTextView: UITextView!
     @IBOutlet private weak var convertedTextView: UITextView!
     @IBOutlet private weak var convertButton: UIButton!
-
-    // MARK: - PanModal Property
-    var panScrollable: UIScrollView?
-    var hasLoaded = false
-    var shortFormHeight: PanModalHeight {
-        if hasLoaded {
-            return .contentHeight(200)
-        }
-        return .maxHeight
-    }
-
-    var allowsDragToDismiss: Bool {
-        return false
-    }
-
-    var allowsTapToDismiss: Bool {
-        return false
-    }
-
-    var panModalBackgroundColor: UIColor {
-        return .clear
-    }
 
     // MARK: - Private Property
     private let convertAPI = ConvertAPI()
@@ -44,7 +22,6 @@ final class InputFromTextViewController: UIViewController, PanModalPresentable {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        hasLoaded = true
         inputTextView.delegate = self
         convertedTextView.isEditable = false
         convertAPI.returnCodeResult = self
@@ -57,28 +34,13 @@ final class InputFromTextViewController: UIViewController, PanModalPresentable {
     }
 }
 
-// MARK: - PanModal Method
-extension InputFromTextViewController {
-    func willTransition(to state: PanModalPresentationController.PresentationState) {
-        switch state {
-        case .longForm:
-            inputTextView.becomeFirstResponder()
-        case .shortForm:
-            inputTextView.endEditing(true)
-        }
-    }
-}
-
 // MARK: - UITextViewDelegate
 extension InputFromTextViewController: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        hasLoaded = false
-        panModalTransition(to: .longForm)
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
-        hasLoaded = true
     }
 }
 
