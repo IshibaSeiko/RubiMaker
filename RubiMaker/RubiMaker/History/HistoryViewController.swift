@@ -21,9 +21,16 @@ final class HistoryViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        inputFromTextViewController.delegate = self
         floatingPanelController.delegate = self
         floatingPanelController.set(contentViewController: inputFromTextViewController)
         floatingPanelController.addPanel(toParent: self, animated: true)
+    }
+}
+
+extension HistoryViewController: InputFromTextViewControllerDelegate {
+    func textViewDidBeginEditing() {
+        floatingPanelController.move(to: .full, animated: true)
     }
 }
 
@@ -31,5 +38,18 @@ final class HistoryViewController: UIViewController {
 extension HistoryViewController: FloatingPanelControllerDelegate {
     func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
         return FloatingPanelLandscapeLayout()
+    }
+
+    func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
+        switch targetPosition {
+        case .full:
+            break
+
+        case .tip:
+            inputFromTextViewController.inputTextView.endEditing(true)
+
+        case .half, .hidden:
+        break
+        }
     }
 }

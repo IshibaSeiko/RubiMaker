@@ -8,13 +8,19 @@
 
 import UIKit
 
+protocol InputFromTextViewControllerDelegate: AnyObject {
+    func textViewDidBeginEditing()
+}
+
 final class InputFromTextViewController: UIViewController {
-    var panScrollable: UIScrollView?
 
     // MARK: - IBOutlet
-    @IBOutlet private weak var inputTextView: UITextView!
+    @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet private weak var convertedTextView: UITextView!
     @IBOutlet private weak var convertButton: UIButton!
+
+    // MARK: - InputFromTextViewControllerDelegate
+    weak var delegate: InputFromTextViewControllerDelegate?
 
     // MARK: - Private Property
     private let convertAPI = ConvertAPI()
@@ -38,6 +44,7 @@ final class InputFromTextViewController: UIViewController {
 extension InputFromTextViewController: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
+        delegate?.textViewDidBeginEditing()
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
