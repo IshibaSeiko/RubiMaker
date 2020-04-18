@@ -31,25 +31,11 @@ final class InputFromTextViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTextView.delegate = self
-
-        inputTextView.layer.borderWidth = 0.5
-        inputTextView.layer.borderColor = UIColor.gray.cgColor
-        inputTextView.layer.cornerRadius = 5.0
-
-        convertedTextView.layer.borderWidth = 0.5
-        convertedTextView.layer.borderColor = UIColor.gray.cgColor
-        convertedTextView.layer.cornerRadius = 5.0
-
-        convertButton.layer.borderWidth = 0.5
-        convertButton.layer.borderColor = UIColor.gray.cgColor
-        convertButton.layer.cornerRadius = 15.0
-
         convertedTextView.isEditable = false
         convertAPI.returnCodeResult = self
-        convertButton.setTitle("Convert", for: .normal)
-        convertButton.setTitle("Reset", for: .selected)
-        bottomView.topAnchor.constraint(equalTo: inputTextView.topAnchor, constant: 50).isActive = true
-        isFull(false)
+        convertButton.isEnabled = false
+        convertButton.alpha = 0.5
+        setInterface()
     }
 
     // MARK: - IBAction
@@ -62,6 +48,9 @@ final class InputFromTextViewController: UIViewController {
         case false:
             inputTextView.text = ""
             convertedTextView.text = ""
+            convertButton.isEnabled = false
+            convertButton.alpha = 0.5
+            inputTextView.becomeFirstResponder()
         }
 
     }
@@ -76,6 +65,29 @@ extension InputFromTextViewController {
     }
 }
 
+// MARK: - Private Method
+extension InputFromTextViewController {
+    private func setInterface() {
+        inputTextView.layer.borderWidth = 0.5
+        inputTextView.layer.borderColor = UIColor.gray.cgColor
+        inputTextView.layer.cornerRadius = 5.0
+
+        convertedTextView.layer.borderWidth = 0.5
+        convertedTextView.layer.borderColor = UIColor.gray.cgColor
+        convertedTextView.layer.cornerRadius = 5.0
+
+        convertButton.layer.borderWidth = 0.5
+        convertButton.layer.borderColor = UIColor.gray.cgColor
+        convertButton.layer.cornerRadius = 15.0
+
+        convertButton.setTitle("Convert", for: .normal)
+        convertButton.setTitle("Reset", for: .selected)
+
+        bottomView.topAnchor.constraint(equalTo: inputTextView.topAnchor, constant: 50).isActive = true
+        isFull(false)
+    }
+}
+
 // MARK: - UITextViewDelegate
 extension InputFromTextViewController: UITextViewDelegate {
 
@@ -84,6 +96,15 @@ extension InputFromTextViewController: UITextViewDelegate {
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        if convertButton.isSelected {
+            convertButton.isSelected = false
+            convertedTextView.text = ""
+        }
+        convertButton.isEnabled = !inputTextView.text.isEmpty
+        convertButton.alpha = convertButton.isEnabled ? 1 : 0.5
     }
 }
 
