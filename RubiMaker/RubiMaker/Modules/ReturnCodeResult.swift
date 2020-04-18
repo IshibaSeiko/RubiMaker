@@ -6,7 +6,7 @@
 //  Copyright © 2020 石場清子. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 enum IndividualResult {
     case loading

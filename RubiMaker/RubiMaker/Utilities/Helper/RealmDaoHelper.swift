@@ -6,8 +6,8 @@
 //  Copyright © 2020 石場清子. All rights reserved.
 //
 
+import Foundation
 import RealmSwift
-import UIKit
 
 final class RealmDaoHelper <T : RealmSwift.Object> {
 

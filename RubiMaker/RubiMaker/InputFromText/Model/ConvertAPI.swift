@@ -6,13 +6,17 @@
 //  Copyright © 2020 石場清子. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-final class ConvertAPI {
+protocol ConvertAPIModel: AnyObject {
+    var returnCodeResult: ReturnCodeResult? { get set }
+    func convert(_ sentence: String, type: ConvertType)
+}
 
+final class ConvertAPI: ConvertAPIModel {
     weak var returnCodeResult: ReturnCodeResult?
 
-    func convert(_ sentence: String, type: ConvertType = .hiragana) {
+    func convert(_ sentence: String, type: ConvertType) {
         let request = ConvertRequest(sentence, type: type)
         returnCodeResult?.returnCodeResult(returnCode: .loading)
 
