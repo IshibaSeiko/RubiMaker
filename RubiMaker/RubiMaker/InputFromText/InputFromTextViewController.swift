@@ -32,14 +32,24 @@ final class InputFromTextViewController: UIViewController {
         inputTextView.delegate = self
         convertedTextView.isEditable = false
         convertAPI.returnCodeResult = self
+        convertButton.setTitle("Convert", for: .normal)
+        convertButton.setTitle("Reset", for: .selected)
         bottomView.topAnchor.constraint(equalTo: inputTextView.topAnchor, constant: 50).isActive = true
         isFull(false)
     }
 
     // MARK: - IBAction
     @IBAction func didTapConvertButton(_ sender: UIButton) {
-        inputTextView.endEditing(true)
-        convertAPI.convert(inputTextView.text)
+        sender.isSelected = !sender.isSelected
+        switch sender.isSelected {
+        case true:
+            inputTextView.endEditing(true)
+            convertAPI.convert(inputTextView.text)
+        case false:
+            inputTextView.text = ""
+            convertedTextView.text = ""
+        }
+
     }
 }
 
