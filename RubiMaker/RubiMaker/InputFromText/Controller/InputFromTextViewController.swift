@@ -102,6 +102,7 @@ extension InputFromTextViewController {
         inputTextView.layer.borderColor = UIColor.systemGray2.cgColor
         inputTextView.layer.cornerRadius = 5.0
         inputTextView.placeholder = "変換したいテキストを入力してください。"
+        inputTextView.placeholderColor = .systemGray2
         inputTextView.minHeight = textViewMinHeight
         inputTextView.maxHeight = textViewMaxHeight
         inputTextView.maxLength = textViewMaxLength
@@ -110,6 +111,7 @@ extension InputFromTextViewController {
         convertedTextView.layer.borderColor = UIColor.systemGray2.cgColor
         convertedTextView.layer.cornerRadius = 5.0
         convertedTextView.placeholder = "変換されたテキストが表示されます。"
+        convertedTextView.placeholderColor = .systemGray2
         convertedTextView.minHeight = textViewMaxHeight
         convertedTextView.maxHeight = textViewMaxHeight
 
