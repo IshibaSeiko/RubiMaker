@@ -46,6 +46,7 @@
 		576E1A372444C44100819B2E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A362444C44100819B2E /* APIClient.swift */; };
 		576E1A392444C49C00819B2E /* WebAPIRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */; };
 		576E1A3B2444C5E400819B2E /* Dictionary+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */; };
+		57FB99A8244C58C3003119B1 /* GrowingTextView in Frameworks */ = {isa = PBXBuildFile; productRef = 57FB99A7244C58C3003119B1 /* GrowingTextView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 				572B5B332449E960008D9EC2 /* FloatingPanel in Frameworks */,
 				576E1A352444C0CA00819B2E /* Reachability in Frameworks */,
 				576E1A2D2444C04700819B2E /* RealmSwift in Frameworks */,
+				57FB99A8244C58C3003119B1 /* GrowingTextView in Frameworks */,
 				576E1A2B2444C04700819B2E /* Realm in Frameworks */,
 				576E1A282444BF9C00819B2E /* Alamofire in Frameworks */,
 				576E1A322444C08E00819B2E /* XCGLogger in Frameworks */,
@@ -366,6 +368,7 @@
 				576E1A312444C08E00819B2E /* XCGLogger */,
 				576E1A342444C0CA00819B2E /* Reachability */,
 				572B5B322449E960008D9EC2 /* FloatingPanel */,
+				57FB99A7244C58C3003119B1 /* GrowingTextView */,
 			);
 			productName = RubiMaker;
 			productReference = 5760DB91244300DA0085BD04 /* RubiMaker.app */;
@@ -445,6 +448,7 @@
 				576E1A2E2444C08E00819B2E /* XCRemoteSwiftPackageReference "XCGLogger" */,
 				576E1A332444C0C900819B2E /* XCRemoteSwiftPackageReference "Reachability" */,
 				572B5B312449E960008D9EC2 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				57FB99A6244C58C3003119B1 /* XCRemoteSwiftPackageReference "GrowingTextView" */,
 			);
 			productRefGroup = 5760DB92244300DA0085BD04 /* Products */;
 			projectDirPath = "";
@@ -876,6 +880,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		57FB99A6244C58C3003119B1 /* XCRemoteSwiftPackageReference "GrowingTextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KennethTsang/GrowingTextView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.7.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -913,6 +925,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 576E1A332444C0C900819B2E /* XCRemoteSwiftPackageReference "Reachability" */;
 			productName = Reachability;
+		};
+		57FB99A7244C58C3003119B1 /* GrowingTextView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57FB99A6244C58C3003119B1 /* XCRemoteSwiftPackageReference "GrowingTextView" */;
+			productName = GrowingTextView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

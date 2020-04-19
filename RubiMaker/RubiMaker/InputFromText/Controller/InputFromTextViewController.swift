@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GrowingTextView
 
 protocol InputFromTextViewControllerDelegate: AnyObject {
     func textViewDidBeginEditing()
@@ -22,11 +23,14 @@ enum ButtonStyle {
 final class InputFromTextViewController: UIViewController {
 
     // MARK: - IBOutlet
-    @IBOutlet weak var inputTextView: UITextView!
-    @IBOutlet weak var convertedTextView: UITextView!
+    @IBOutlet weak var inputTextView: GrowingTextView!
+    @IBOutlet weak var convertedTextView: GrowingTextView!
     @IBOutlet weak var convertButtonBackView: UIView!
     @IBOutlet weak var convertButton: UIButton!
-    @IBOutlet private weak var bottomView: UIView!
+    @IBOutlet weak var convertTypeButton: UIButton!
+    @IBOutlet weak var hiraganaLabel: UILabel!
+    @IBOutlet weak var katakanaLabel: UILabel!
+    @IBOutlet weak var copyButton: UIButton!
 
     // MARK: - InputFromTextViewControllerDelegate
     weak var delegate: InputFromTextViewControllerDelegate?
@@ -50,6 +54,25 @@ final class InputFromTextViewController: UIViewController {
             }
         }
     }
+    var convertType: ConvertType = .hiragana {
+        didSet {
+            switch convertType {
+            case .hiragana:
+                convertButton.setTitle("ひらがなに変換", for: .normal)
+                hiraganaLabel.textColor = .darkText
+                katakanaLabel.textColor = .secondaryLabel
+            case .katakana:
+                convertButton.setTitle("カタカナに変換", for: .normal)
+                hiraganaLabel.textColor = .secondaryLabel
+                katakanaLabel.textColor = .darkText
+            }
+
+        }
+    }
+
+    private let textViewMinHeight: CGFloat = 50.0
+    private let textViewMaxHeight: CGFloat = 150.0
+    private let textViewMaxLength = 400
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -65,18 +88,34 @@ final class InputFromTextViewController: UIViewController {
     @IBAction func didTapConvertButton(_ sender: UIButton) {
         switch buttonStyle {
         case .convert:
-            inputTextView.endEditing(true)
-            convertAPI.convert(inputTextView.text, type: .hiragana)
+            inputTextView.resignFirstResponder()
+            convertAPI.convert(inputTextView.text, type: convertType)
         case .reset:
             inputTextView.text = ""
             convertedTextView.text = ""
+            copyButton.isEnabled = false
             inputTextView.becomeFirstResponder()
             buttonStyle = .enable
         case .enable:
             break
         }
-
     }
+
+    @IBAction func didTapConvertTypeButton(_ sender: UIButton) {
+        convertType = convertType == .hiragana ? .katakana : .hiragana
+        buttonStyle = .convert
+    }
+
+    @IBAction func didTapCopyButton(_ sender: UIButton) {
+        UIPasteboard.general.string = convertedTextView.text
+        let alert = UIAlertController.init(title: nil, message: "クリップボードにコピーしました。", preferredStyle: .alert)
+        present(alert, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                alert.dismiss(animated: true)
+            }
+        }
+    }
+
 }
 
 // MARK: - Instance Method
@@ -84,7 +123,8 @@ extension InputFromTextViewController {
     func isFull(_ isFull: Bool) {
         convertButtonBackView.isHidden = !isFull
         convertedTextView.isHidden = !isFull
-        bottomView.isHidden = isFull
+        inputTextView.maxHeight = isFull ? textViewMaxHeight : textViewMinHeight
+        inputTextView.minHeight = isFull ? textViewMaxHeight : textViewMinHeight
     }
 }
 
@@ -96,19 +136,29 @@ extension InputFromTextViewController {
         inputTextView.layer.borderWidth = 0.5
         inputTextView.layer.borderColor = UIColor.systemGray2.cgColor
         inputTextView.layer.cornerRadius = 5.0
+        inputTextView.placeholder = "変換したいテキストを入力してください。"
+        inputTextView.placeholderColor = .systemGray2
+        inputTextView.minHeight = textViewMinHeight
+        inputTextView.maxHeight = textViewMaxHeight
+        inputTextView.maxLength = textViewMaxLength
 
         convertedTextView.layer.borderWidth = 0.5
         convertedTextView.layer.borderColor = UIColor.systemGray2.cgColor
         convertedTextView.layer.cornerRadius = 5.0
+        convertedTextView.placeholder = "変換されたテキストが表示されます。"
+        convertedTextView.placeholderColor = .systemGray2
+        convertedTextView.minHeight = textViewMaxHeight
+        convertedTextView.maxHeight = textViewMaxHeight
 
         convertButton.layer.borderWidth = 0.5
         convertButton.layer.borderColor = UIColor.systemGray2.cgColor
         convertButton.layer.cornerRadius = 15.0
 
-        convertButton.setTitle("Convert", for: .normal)
-        convertButton.setTitle("Reset", for: .selected)
+        copyButton.isEnabled = false
 
-        bottomView.topAnchor.constraint(equalTo: inputTextView.topAnchor, constant: 50).isActive = true
+        convertButton.setTitle("ひらがなに変換", for: .normal)
+        convertButton.setTitle("リセット", for: .selected)
+
         isFull(false)
     }
 }
@@ -123,7 +173,30 @@ extension InputFromTextViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
     }
 
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if textView != inputTextView {
+            return true
+        }
+
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+
+        if text.contains("\n") {
+            inputTextView.text = inputTextView.text
+                + text.replacingOccurrences(of: "\n", with: " ")
+            textViewDidChange(inputTextView)
+            return false
+        }
+
+        return true
+    }
+
     func textViewDidChange(_ textView: UITextView) {
+        if textView != inputTextView {
+            return
+        }
 
         switch buttonStyle {
         case .convert:
@@ -148,6 +221,7 @@ extension InputFromTextViewController: ReturnCodeResult {
                 return
             }
             convertedTextView.text = convertedData.converted
+            copyButton.isEnabled = true
             HistoryDao.update(object: ConvertEntity(input: inputTextView.text,
                                                     convertResponse: convertedData))
             buttonStyle = .reset
