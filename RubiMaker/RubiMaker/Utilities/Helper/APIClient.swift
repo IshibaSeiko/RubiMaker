@@ -9,6 +9,23 @@
 import Foundation
 import Alamofire
 
+enum ErrorResult: Error {
+    case badRequest
+    case notFound
+    case methodNotAllowed
+    case payloadTooLarge
+    case internalServerError
+}
+
+enum StatusCode: Int {
+    case success = 200
+    case badRequest = 400
+    case notFound = 404
+    case methodNotAllowed = 405
+    case payloadTooLarge = 413
+    case internalServerError = 500
+}
+
 class APIClient {
     
     /// タイムインターバル
@@ -79,6 +96,26 @@ extension APIClient {
             return
         }
         
+        if case .notFound? = StatusCode(rawValue: statusCode) {
+            completionHandler(Result.failure(ErrorResult.notFound))
+            return
+        }
+
+        if case .methodNotAllowed? = StatusCode(rawValue: statusCode) {
+            completionHandler(Result.failure(ErrorResult.methodNotAllowed))
+            return
+        }
+
+        if case .payloadTooLarge? = StatusCode(rawValue: statusCode) {
+            completionHandler(Result.failure(ErrorResult.payloadTooLarge))
+            return
+        }
+
+        if case .internalServerError? = StatusCode(rawValue: statusCode) {
+            completionHandler(Result.failure(ErrorResult.internalServerError))
+            return
+        }
+
         var responseJson = ""
         if let json = response.value as? [String: Any] {
             responseJson = json.prettyPrintedJsonString
