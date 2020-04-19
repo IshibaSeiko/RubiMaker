@@ -23,9 +23,9 @@ final class InputFromTextViewController: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet weak var inputTextView: UITextView!
-    @IBOutlet private weak var convertedTextView: UITextView!
+    @IBOutlet weak var convertedTextView: UITextView!
     @IBOutlet weak var convertButtonBackView: UIView!
-    @IBOutlet private weak var convertButton: UIButton!
+    @IBOutlet weak var convertButton: UIButton!
     @IBOutlet private weak var bottomView: UIView!
 
     // MARK: - InputFromTextViewControllerDelegate
@@ -33,7 +33,7 @@ final class InputFromTextViewController: UIViewController {
 
     // MARK: - Private Property
     private var convertAPI: ConvertAPIModel!
-    private var buttonStyle: ButtonStyle = .enable {
+    var buttonStyle: ButtonStyle = .enable {
         didSet {
             switch buttonStyle {
             case .convert:
