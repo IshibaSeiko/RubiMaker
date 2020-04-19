@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57068955244BF44500104371 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57068954244BF44500104371 /* AlertHelper.swift */; };
 		572B5B332449E960008D9EC2 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 572B5B322449E960008D9EC2 /* FloatingPanel */; };
 		572B5B35244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */; };
 		572B5B39244B098B008D9EC2 /* ConvertEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B38244B098B008D9EC2 /* ConvertEntity.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		57068954244BF44500104371 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelLandscapeLayout.swift; sourceTree = "<group>"; };
 		572B5B38244B098B008D9EC2 /* ConvertEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertEntity.swift; sourceTree = "<group>"; };
 		572B5B3A244B0C08008D9EC2 /* RealmDaoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDaoHelper.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				576E1A362444C44100819B2E /* APIClient.swift */,
 				572B5B3A244B0C08008D9EC2 /* RealmDaoHelper.swift */,
+				57068954244BF44500104371 /* AlertHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				576499E02447460A0088B6D6 /* ReturnCodeResult.swift in Sources */,
 				576499DD244731EB0088B6D6 /* ConvertResponse.swift in Sources */,
 				5760DB97244300DA0085BD04 /* SceneDelegate.swift in Sources */,
+				57068955244BF44500104371 /* AlertHelper.swift in Sources */,
 				572B5B43244B1B95008D9EC2 /* HistoryListProvider.swift in Sources */,
 				576E1A392444C49C00819B2E /* WebAPIRequestProtocol.swift in Sources */,
 				576E1A1E24430D4600819B2E /* UIStoryboard+Instance.swift in Sources */,
