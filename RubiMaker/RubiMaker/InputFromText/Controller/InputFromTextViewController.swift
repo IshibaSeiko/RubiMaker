@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GrowingTextView
 
 protocol InputFromTextViewControllerDelegate: AnyObject {
     func textViewDidBeginEditing()
@@ -22,8 +23,8 @@ enum ButtonStyle {
 final class InputFromTextViewController: UIViewController {
 
     // MARK: - IBOutlet
-    @IBOutlet weak var inputTextView: UITextView!
-    @IBOutlet weak var convertedTextView: UITextView!
+    @IBOutlet weak var inputTextView: GrowingTextView!
+    @IBOutlet weak var convertedTextView: GrowingTextView!
     @IBOutlet weak var convertButtonBackView: UIView!
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet private weak var bottomView: UIView!
@@ -96,10 +97,12 @@ extension InputFromTextViewController {
         inputTextView.layer.borderWidth = 0.5
         inputTextView.layer.borderColor = UIColor.systemGray2.cgColor
         inputTextView.layer.cornerRadius = 5.0
+        inputTextView.placeholder = "変換したいテキストを入力してください。"
 
         convertedTextView.layer.borderWidth = 0.5
         convertedTextView.layer.borderColor = UIColor.systemGray2.cgColor
         convertedTextView.layer.cornerRadius = 5.0
+        convertedTextView.placeholder = "変換されたテキストが表示されます。"
 
         convertButton.layer.borderWidth = 0.5
         convertButton.layer.borderColor = UIColor.systemGray2.cgColor

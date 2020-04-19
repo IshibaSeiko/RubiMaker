@@ -16,17 +16,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EPZ-HZ-oJO">
-                                <rect key="frame" x="8" y="60" width="398" height="820"/>
+                                <rect key="frame" x="8" y="60" width="398" height="460"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kLr-Z1-wQT">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="304"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kLr-Z1-wQT" customClass="GrowingTextView" customModule="GrowingTextView">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="200"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="V87-8V-zLc"/>
+                                        </constraints>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Een-KG-uJp">
-                                        <rect key="frame" x="0.0" y="304" width="398" height="60"/>
+                                        <rect key="frame" x="0.0" y="200" width="398" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eea-jo-z7m">
                                                 <rect key="frame" x="99" y="13" width="200" height="34"/>
@@ -48,34 +51,29 @@
                                             <constraint firstItem="eea-jo-z7m" firstAttribute="centerX" secondItem="Een-KG-uJp" secondAttribute="centerX" id="LTD-AF-XfE"/>
                                         </constraints>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V3H-5z-adr">
-                                        <rect key="frame" x="0.0" y="364" width="398" height="320"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V3H-5z-adr" customClass="GrowingTextView" customModule="GrowingTextView">
+                                        <rect key="frame" x="0.0" y="260" width="398" height="200"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="320" id="ypb-Cq-9eO"/>
+                                            <constraint firstAttribute="height" constant="200" id="ypb-Cq-9eO"/>
                                         </constraints>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="398" placeholderIntrinsicHeight="136" translatesAutoresizingMaskIntoConstraints="NO" id="7TQ-ed-yLb">
-                                        <rect key="frame" x="0.0" y="684" width="398" height="136"/>
-                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="EPZ-HZ-oJO" secondAttribute="bottom" constant="16" id="CEL-1b-4OV"/>
-                            <constraint firstItem="EPZ-HZ-oJO" firstAttribute="leading" secondItem="9fL-MJ-X0T" secondAttribute="leading" constant="8" id="CRG-6D-izL"/>
-                            <constraint firstItem="EPZ-HZ-oJO" firstAttribute="top" secondItem="9fL-MJ-X0T" secondAttribute="top" constant="16" id="OKc-VU-nT9"/>
-                            <constraint firstItem="9fL-MJ-X0T" firstAttribute="trailing" secondItem="EPZ-HZ-oJO" secondAttribute="trailing" constant="8" id="VJM-fy-hIj"/>
+                            <constraint firstItem="EPZ-HZ-oJO" firstAttribute="top" secondItem="9fL-MJ-X0T" secondAttribute="top" constant="16" id="6X5-bp-abH"/>
+                            <constraint firstItem="EPZ-HZ-oJO" firstAttribute="leading" secondItem="9fL-MJ-X0T" secondAttribute="leading" constant="8" id="biT-aa-5Pt"/>
+                            <constraint firstItem="9fL-MJ-X0T" firstAttribute="trailing" secondItem="EPZ-HZ-oJO" secondAttribute="trailing" constant="8" id="gap-br-91j"/>
                             <constraint firstItem="EPZ-HZ-oJO" firstAttribute="centerX" secondItem="VRI-JE-6TQ" secondAttribute="centerX" id="xky-pQ-NQC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9fL-MJ-X0T"/>
                     </view>
                     <connections>
-                        <outlet property="bottomView" destination="7TQ-ed-yLb" id="T05-XX-XvV"/>
                         <outlet property="convertButton" destination="eea-jo-z7m" id="VrQ-gY-gsu"/>
                         <outlet property="convertButtonBackView" destination="Een-KG-uJp" id="CYN-9S-QP8"/>
                         <outlet property="convertedTextView" destination="V3H-5z-adr" id="UKz-KS-5tn"/>
