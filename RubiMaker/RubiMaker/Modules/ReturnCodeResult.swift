@@ -15,6 +15,21 @@ enum IndividualResult {
     case systemError
     case payloadTooLarge
     case rateLimitExceeded
+
+    var errorMessage: String {
+        switch self {
+        case .failure(_):
+            return "エラーが発生しました。\nアプリ管理者までお問い合わせください。"
+        case .systemError:
+            return "システムエラーが発生しました。\nアプリ管理者までお問い合わせください。"
+        case .payloadTooLarge:
+            return "変換する文字が多過ぎます。\n文字数を減らし、再度お試しください。"
+        case .rateLimitExceeded:
+            return "本日の利用上限を超過しました。\n時間を開けて再度お試しください。"
+        default:
+            return ""
+        }
+    }
 }
 
 protocol ReturnCodeResult: AnyObject {
