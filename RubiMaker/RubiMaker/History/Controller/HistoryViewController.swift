@@ -46,7 +46,12 @@ extension HistoryViewController: UITableViewDelegate {
         let action = UIContextualAction(style: .destructive, title: "削除") { (action, view, completionHandler) in
             HistoryDao.update(object: ConvertEntity(convertEntity: self.historyListProvider.history(index: indexPath.row), changeDeleteStatus: true))
             self.historyListProvider.set(HistoryDao.findUnDeleteObjects())
-            self.historyTableView.reloadData()
+
+            if HistoryDao.findUnDeleteObjects().isEmpty {
+                self.historyTableView.reloadRows(at: [indexPath], with: .left)
+            } else {
+                self.historyTableView.deleteRows(at: [indexPath], with: .left)
+            }
             completionHandler(true)
         }
         let configuration = UISwipeActionsConfiguration(actions: [action])
