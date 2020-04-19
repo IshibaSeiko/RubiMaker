@@ -23,24 +23,41 @@ final class ConvertAPI: ConvertAPIModel {
         APIClient.request(request: request) { response in
             switch response {
             case .success(let result):
-
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 guard let result = result else {
                     return
                 }
-                do {
-                    let decodedResult = try decoder.decode(ConvertResponse.self, from: result)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+                if let decodedResult = try? decoder.decode(ConvertResponse.self, from: result) {
                     self.returnCodeResult?.returnCodeResult(returnCode: .success(decodedResult))
-                } catch {
-                    self.returnCodeResult?.returnCodeResult(returnCode: .decodeError)
                 }
 
+                if let decodedResult = try? decoder.decode(ConvertErrorResponse.self, from: result) {
+                    let errorType = ConvertAPIError(rawValue: decodedResult.error.message)
+                    switch errorType {
+                    case .rateLimitExceeded:
+                        self.returnCodeResult?.returnCodeResult(returnCode: .rateLimitExceeded)
+                    default:
+                        self.returnCodeResult?.returnCodeResult(returnCode: .systemError)
+                    }
+                }
+                self.returnCodeResult?.returnCodeResult(returnCode: .systemError)
+
             case .failure(let error):
-                self.returnCodeResult?.returnCodeResult(returnCode: .failure(error))
-                break
+
+                switch error {
+                case ErrorResult.payloadTooLarge:
+                    self.returnCodeResult?.returnCodeResult(returnCode: .payloadTooLarge)
+                case ErrorResult.notFound,
+                     ErrorResult.badRequest,
+                     ErrorResult.methodNotAllowed,
+                     ErrorResult.internalServerError:
+                    self.returnCodeResult?.returnCodeResult(returnCode: .systemError)
+                default:
+                    self.returnCodeResult?.returnCodeResult(returnCode: .failure(error))
+                }
             }
         }
     }
 }
-

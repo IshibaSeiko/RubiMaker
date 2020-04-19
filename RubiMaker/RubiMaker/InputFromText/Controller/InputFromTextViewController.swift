@@ -123,10 +123,15 @@ extension InputFromTextViewController: ReturnCodeResult {
             HistoryDao.update(object: ConvertEntity(input: inputTextView.text,
                                                     convertResponse: convertedData))
             delegate?.finishConvert()
-        case .decodeError:
-            break
+            
         case .failure(let error):
-            break
+            log?.info(error)
+            let alert = AlertHelper.buildAlert(message: returnCode.errorMessage)
+            present(alert, animated: true)
+            
+        case .systemError, .payloadTooLarge, .rateLimitExceeded:
+            let alert = AlertHelper.buildAlert(message: returnCode.errorMessage)
+            present(alert, animated: true)
         }
     }
 }
