@@ -25,6 +25,7 @@ final class HistoryViewController: UIViewController {
 
         historyTableView.register(UINib(nibName: HistoryTableViewCell.className, bundle: nil), forCellReuseIdentifier: HistoryTableViewCell.className)
         historyTableView.tableFooterView = UIView()
+        historyTableView.delegate = self
         historyTableView.dataSource = historyListProvider
         historyListProvider.delegate = self
         historyListProvider.set(HistoryDao.findUnDeleteObjects())
@@ -32,11 +33,28 @@ final class HistoryViewController: UIViewController {
 
         inputFromTextViewController.delegate = self
         floatingPanelController.delegate = self
+        floatingPanelController.surfaceView.cornerRadius = 10.0
         floatingPanelController.set(contentViewController: inputFromTextViewController)
         floatingPanelController.addPanel(toParent: self, animated: true)
     }
 }
 
+// MARK: - UITableViewDelegate
+extension HistoryViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "削除") { (action, view, completionHandler) in
+            HistoryDao.update(object: ConvertEntity(convertEntity: self.historyListProvider.history(index: indexPath.row), changeDeleteStatus: true))
+            self.historyListProvider.set(HistoryDao.findUnDeleteObjects())
+            self.historyTableView.reloadData()
+            completionHandler(true)
+        }
+        let configuration = UISwipeActionsConfiguration(actions: [action])
+        return HistoryDao.findUnDeleteObjects().isEmpty ? .none : configuration
+    }
+}
+
+// MARK: - HistoryListProviderProtocol
 extension HistoryViewController: HistoryListProviderProtocol {
     func historyStatus(_ newElement: ConvertEntity) {
         HistoryDao.update(object: newElement)

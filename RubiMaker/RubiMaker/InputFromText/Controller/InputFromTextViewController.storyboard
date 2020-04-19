@@ -20,6 +20,7 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kLr-Z1-wQT">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="304"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -29,18 +30,18 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eea-jo-z7m">
                                                 <rect key="frame" x="99" y="13" width="200" height="34"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="DkR-Yy-KEv"/>
                                                 </constraints>
                                                 <state key="normal" title="Convert!">
-                                                    <color key="titleColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapConvertButton:" destination="fzM-Fc-VcS" eventType="touchUpInside" id="IdM-fc-Kae"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="eea-jo-z7m" firstAttribute="centerY" secondItem="Een-KG-uJp" secondAttribute="centerY" id="0eD-h2-3fn"/>
                                             <constraint firstAttribute="height" constant="60" id="F5B-DJ-4JD"/>
@@ -49,6 +50,7 @@
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V3H-5z-adr">
                                         <rect key="frame" x="0.0" y="364" width="398" height="320"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="320" id="ypb-Cq-9eO"/>
                                         </constraints>
@@ -58,12 +60,11 @@
                                     </textView>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="398" placeholderIntrinsicHeight="136" translatesAutoresizingMaskIntoConstraints="NO" id="7TQ-ed-yLb">
                                         <rect key="frame" x="0.0" y="684" width="398" height="136"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="EPZ-HZ-oJO" secondAttribute="bottom" constant="16" id="CEL-1b-4OV"/>
                             <constraint firstItem="EPZ-HZ-oJO" firstAttribute="leading" secondItem="9fL-MJ-X0T" secondAttribute="leading" constant="8" id="CRG-6D-izL"/>

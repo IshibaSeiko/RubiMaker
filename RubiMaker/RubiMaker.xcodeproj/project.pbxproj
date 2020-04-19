@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		57068955244BF44500104371 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57068954244BF44500104371 /* AlertHelper.swift */; };
+		57068958244C1DF500104371 /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57068957244C1DF500104371 /* UIViewController+ActivityIndicator.swift */; };
+		5706895A244C1E9A00104371 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57068959244C1E9A00104371 /* Constants.swift */; };
 		572B5B332449E960008D9EC2 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 572B5B322449E960008D9EC2 /* FloatingPanel */; };
 		572B5B35244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */; };
 		572B5B39244B098B008D9EC2 /* ConvertEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B38244B098B008D9EC2 /* ConvertEntity.swift */; };
@@ -64,6 +66,8 @@
 
 /* Begin PBXFileReference section */
 		57068954244BF44500104371 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		57068957244C1DF500104371 /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		57068959244C1E9A00104371 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelLandscapeLayout.swift; sourceTree = "<group>"; };
 		572B5B38244B098B008D9EC2 /* ConvertEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertEntity.swift; sourceTree = "<group>"; };
 		572B5B3A244B0C08008D9EC2 /* RealmDaoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDaoHelper.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				576E1A1D24430D4600819B2E /* UIStoryboard+Instance.swift */,
+				57068957244C1DF500104371 /* UIViewController+ActivityIndicator.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				572B5B4D244B5482008D9EC2 /* Helper */,
 				572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */,
 				572B5B3C244B0D86008D9EC2 /* RealmInitializer.swift */,
+				57068959244C1E9A00104371 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -500,10 +506,12 @@
 				576E1A1E24430D4600819B2E /* UIStoryboard+Instance.swift in Sources */,
 				572B5B3B244B0C08008D9EC2 /* RealmDaoHelper.swift in Sources */,
 				572B5B39244B098B008D9EC2 /* ConvertEntity.swift in Sources */,
+				57068958244C1DF500104371 /* UIViewController+ActivityIndicator.swift in Sources */,
 				576E1A372444C44100819B2E /* APIClient.swift in Sources */,
 				576E1A3B2444C5E400819B2E /* Dictionary+JSON.swift in Sources */,
 				572B5B3D244B0D86008D9EC2 /* RealmInitializer.swift in Sources */,
 				572B5B41244B0E8F008D9EC2 /* HistoryDao.swift in Sources */,
+				5706895A244C1E9A00104371 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

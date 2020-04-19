@@ -24,12 +24,14 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U20-NV-xOB">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="17.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpj-hh-U2G">
                                         <rect key="frame" x="0.0" y="17.5" width="268" height="26.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -41,16 +43,21 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbJ-so-5ke">
                                 <rect key="frame" x="268" y="0.0" width="44" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Vii-MH-vEv"/>
+                                    <constraint firstAttribute="width" priority="999" constant="44" id="0Ts-0L-raO"/>
                                     <constraint firstAttribute="width" secondItem="IbJ-so-5ke" secondAttribute="height" id="XW7-hq-y1x"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="star" catalog="system"/>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="IbJ-so-5ke" firstAttribute="centerY" secondItem="XlU-6A-CSK" secondAttribute="centerY" id="XGU-da-dsr"/>
+                        </constraints>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstItem="XlU-6A-CSK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="2Kc-F1-1es"/>
                     <constraint firstAttribute="trailing" secondItem="XlU-6A-CSK" secondAttribute="trailing" id="Cci-ni-GC9"/>

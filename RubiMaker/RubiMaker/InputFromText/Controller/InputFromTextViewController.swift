@@ -13,6 +13,12 @@ protocol InputFromTextViewControllerDelegate: AnyObject {
     func finishConvert()
 }
 
+enum ButtonStyle {
+    case convert
+    case reset
+    case enable
+}
+
 final class InputFromTextViewController: UIViewController {
 
     // MARK: - IBOutlet
@@ -27,6 +33,23 @@ final class InputFromTextViewController: UIViewController {
 
     // MARK: - Private Property
     private var convertAPI: ConvertAPIModel!
+    private var buttonStyle: ButtonStyle = .enable {
+        didSet {
+            switch buttonStyle {
+            case .convert:
+                convertButton.isSelected = false
+                convertButton.isEnabled = true
+                convertButton.alpha = 1.0
+            case .reset:
+                convertButton.isSelected = true
+                convertButton.isEnabled = true
+                convertButton.alpha = 1.0
+            case .enable:
+                convertButton.isEnabled = false
+                convertButton.alpha = 0.3
+            }
+        }
+    }
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -34,8 +57,7 @@ final class InputFromTextViewController: UIViewController {
         inputTextView.delegate = self
         convertedTextView.isEditable = false
         convertAPI.returnCodeResult = self
-        convertButton.isEnabled = false
-        convertButton.alpha = 0.5
+        buttonStyle = .enable
         setInterface()
     }
 
@@ -49,9 +71,8 @@ final class InputFromTextViewController: UIViewController {
         case false:
             inputTextView.text = ""
             convertedTextView.text = ""
-            convertButton.isEnabled = false
-            convertButton.alpha = 0.5
             inputTextView.becomeFirstResponder()
+            buttonStyle = .enable
         }
 
     }
@@ -69,16 +90,18 @@ extension InputFromTextViewController {
 // MARK: - Private Method
 extension InputFromTextViewController {
     private func setInterface() {
+        view.alpha = 0.8
+        
         inputTextView.layer.borderWidth = 0.5
-        inputTextView.layer.borderColor = UIColor.gray.cgColor
+        inputTextView.layer.borderColor = UIColor.systemGray2.cgColor
         inputTextView.layer.cornerRadius = 5.0
 
         convertedTextView.layer.borderWidth = 0.5
-        convertedTextView.layer.borderColor = UIColor.gray.cgColor
+        convertedTextView.layer.borderColor = UIColor.systemGray2.cgColor
         convertedTextView.layer.cornerRadius = 5.0
 
         convertButton.layer.borderWidth = 0.5
-        convertButton.layer.borderColor = UIColor.gray.cgColor
+        convertButton.layer.borderColor = UIColor.systemGray2.cgColor
         convertButton.layer.cornerRadius = 15.0
 
         convertButton.setTitle("Convert", for: .normal)
@@ -100,12 +123,16 @@ extension InputFromTextViewController: UITextViewDelegate {
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        if convertButton.isSelected {
-            convertButton.isSelected = false
-            convertedTextView.text = ""
+
+        switch buttonStyle {
+        case .convert:
+            break
+        case .reset, .enable:
+            buttonStyle = .convert
         }
-        convertButton.isEnabled = !inputTextView.text.isEmpty
-        convertButton.alpha = convertButton.isEnabled ? 1 : 0.5
+        if inputTextView.text.isEmpty {
+            buttonStyle = .enable
+        }
     }
 }
 
@@ -114,7 +141,7 @@ extension InputFromTextViewController: ReturnCodeResult {
     func returnCodeResult(returnCode: IndividualResult) {
         switch returnCode {
         case .loading:
-            break
+            startActivityIndicator()
         case .success(let result):
             guard let convertedData = result as? ConvertResponse else {
                 return
@@ -122,14 +149,17 @@ extension InputFromTextViewController: ReturnCodeResult {
             convertedTextView.text = convertedData.converted
             HistoryDao.update(object: ConvertEntity(input: inputTextView.text,
                                                     convertResponse: convertedData))
+            buttonStyle = .reset
             delegate?.finishConvert()
-            
+            stopActivityIndicator()
         case .failure(let error):
             log?.info(error)
+            stopActivityIndicator()
             let alert = AlertHelper.buildAlert(message: returnCode.errorMessage)
             present(alert, animated: true)
             
         case .systemError, .payloadTooLarge, .rateLimitExceeded:
+            stopActivityIndicator()
             let alert = AlertHelper.buildAlert(message: returnCode.errorMessage)
             present(alert, animated: true)
         }
