@@ -55,11 +55,8 @@ final class ConvertAPI: ConvertAPIModel {
                      ErrorResult.internalServerError:
                     self.returnCodeResult?.returnCodeResult(returnCode: .systemError)
                 default:
-                    break
+                    self.returnCodeResult?.returnCodeResult(returnCode: .failure(error))
                 }
-
-                self.returnCodeResult?.returnCodeResult(returnCode: .failure(error))
-                break
             }
         }
     }
