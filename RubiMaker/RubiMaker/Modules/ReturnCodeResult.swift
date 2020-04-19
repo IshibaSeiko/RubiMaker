@@ -12,7 +12,9 @@ enum IndividualResult {
     case loading
     case success(_ T: Decodable)
     case failure(_ error: Error)
-    case decodeError
+    case systemError
+    case payloadTooLarge
+    case rateLimitExceeded
 }
 
 protocol ReturnCodeResult: AnyObject {

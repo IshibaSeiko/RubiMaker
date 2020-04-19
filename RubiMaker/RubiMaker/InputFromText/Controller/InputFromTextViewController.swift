@@ -123,9 +123,13 @@ extension InputFromTextViewController: ReturnCodeResult {
             HistoryDao.update(object: ConvertEntity(input: inputTextView.text,
                                                     convertResponse: convertedData))
             delegate?.finishConvert()
-        case .decodeError:
-            break
         case .failure(let error):
+            break
+        case .systemError:
+            break
+        case .payloadTooLarge:
+            break
+        case .rateLimitExceeded:
             break
         }
     }
