@@ -102,6 +102,7 @@ final class InputFromTextViewController: UIViewController {
 
     @IBAction func didTapConvertTypeButton(_ sender: UIButton) {
         convertType = convertType == .hiragana ? .katakana : .hiragana
+        buttonStyle = .convert
     }
 }
 
