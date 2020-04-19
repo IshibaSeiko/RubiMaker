@@ -27,7 +27,6 @@ enum StatusCode: Int {
 }
 
 class APIClient {
-    
     /// タイムインターバル
     static let defaultTimeInterval: TimeInterval = 30
     
@@ -46,7 +45,6 @@ class APIClient {
     
     static func request<T: WebAPIRequestProtocol>(request: T,
                                                   completionHandler: @escaping (Result<Data?, Error>) -> Void = { _ in }) {
-        
         guard let url =  URL(string: request.baseURLString + request.path) else {
             fatalError("URLが不正")
         }
@@ -88,7 +86,6 @@ extension APIClient {
     
     private static func receivedResponse(_ response: Alamofire.AFDataResponse<Any>,
                                          completionHandler: @escaping (Result<Data?, Error>) -> Void = { _ in }) {
-        
         guard let statusCode = response.response?.statusCode else {
             if let error = response.error {
                 completionHandler(Result.failure(error))
@@ -120,20 +117,19 @@ extension APIClient {
         if let json = response.value as? [String: Any] {
             responseJson = json.prettyPrintedJsonString
         } else {
-            
             if let jsonArray = response.value as? [[String: Any]] {
-                
                 for json in jsonArray {
                     responseJson += json.prettyPrintedJsonString
                 }
             }
         }
+
         switch response.result {
-            
         case .success:
             guard let data = response.data else {
                 return
             }
+
             log?.info("\n👇👇👇" +
                 "\nStatusCode: \(statusCode)\nResponseBody: \(responseJson)")
             completionHandler(Result.success(data))

@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIViewController {
-
     var activityIndicatorTag: Int {
         return Constants.ViewTags.activityIndicatorTag
     }
@@ -40,7 +39,6 @@ extension UIViewController {
     }
 
     func stopActivityIndicator() {
-
         view.isUserInteractionEnabled = true
 
         DispatchQueue.main.async { [weak self] in
@@ -54,7 +52,6 @@ extension UIViewController {
 }
 
 private extension UIViewController {
-
     var activityIndicatorView: UIActivityIndicatorView? {
         if let activityIndicator = view.subviews.filter(
             { $0.tag == activityIndicatorTag}).first as? UIActivityIndicatorView {

@@ -44,10 +44,12 @@ final class InputFromTextViewController: UIViewController {
                 convertButton.isSelected = false
                 convertButton.isEnabled = true
                 convertButton.alpha = 1.0
+
             case .reset:
                 convertButton.isSelected = true
                 convertButton.isEnabled = true
                 convertButton.alpha = 1.0
+
             case .enable:
                 convertButton.isEnabled = false
                 convertButton.alpha = 0.3
@@ -61,12 +63,12 @@ final class InputFromTextViewController: UIViewController {
                 convertButton.setTitle("ひらがなに変換", for: .normal)
                 hiraganaLabel.textColor = .darkText
                 katakanaLabel.textColor = .secondaryLabel
+
             case .katakana:
                 convertButton.setTitle("カタカナに変換", for: .normal)
                 hiraganaLabel.textColor = .secondaryLabel
                 katakanaLabel.textColor = .darkText
             }
-
         }
     }
 
@@ -90,12 +92,14 @@ final class InputFromTextViewController: UIViewController {
         case .convert:
             inputTextView.resignFirstResponder()
             convertAPI.convert(inputTextView.text, type: convertType)
+
         case .reset:
             inputTextView.text = ""
             convertedTextView.text = ""
             copyButton.isEnabled = false
             inputTextView.becomeFirstResponder()
             buttonStyle = .enable
+
         case .enable:
             break
         }
@@ -115,7 +119,6 @@ final class InputFromTextViewController: UIViewController {
             }
         }
     }
-
 }
 
 // MARK: - Instance Method
@@ -170,9 +173,6 @@ extension InputFromTextViewController: UITextViewDelegate {
         delegate?.textViewDidBeginEditing()
     }
 
-    func textViewDidEndEditing(_ textView: UITextView) {
-    }
-
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if textView != inputTextView {
             return true
@@ -201,9 +201,11 @@ extension InputFromTextViewController: UITextViewDelegate {
         switch buttonStyle {
         case .convert:
             break
+
         case .reset, .enable:
             buttonStyle = .convert
         }
+
         if inputTextView.text.isEmpty {
             buttonStyle = .enable
         }
@@ -216,6 +218,7 @@ extension InputFromTextViewController: ReturnCodeResult {
         switch returnCode {
         case .loading:
             startActivityIndicator()
+
         case .success(let result):
             guard let convertedData = result as? ConvertResponse else {
                 return
@@ -227,6 +230,7 @@ extension InputFromTextViewController: ReturnCodeResult {
             buttonStyle = .reset
             delegate?.finishConvert()
             stopActivityIndicator()
+
         case .failure(let error):
             log?.info(error)
             stopActivityIndicator()

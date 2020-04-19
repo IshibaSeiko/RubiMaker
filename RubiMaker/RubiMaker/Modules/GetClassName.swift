@@ -13,7 +13,6 @@ protocol GetClassName {
 
 extension GetClassName {
     static var className: String {
-
         return String(describing: self)
     }
 }

@@ -9,7 +9,6 @@
 import RealmSwift
 
 final class RealmInitializer: RealmInitializeService {
-
     let configuration: Realm.Configuration?
 
     init(configuration: Realm.Configuration? = nil) {

@@ -9,7 +9,6 @@
 import Foundation
 
 extension Dictionary {
-
     var prettyPrintedJsonString: String {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: self, options: [.prettyPrinted])

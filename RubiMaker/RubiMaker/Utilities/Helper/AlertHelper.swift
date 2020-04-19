@@ -9,7 +9,6 @@
 import UIKit
 
 final class AlertHelper {
-
     typealias AlertActionType = ((UIAlertAction) -> Void)
 
     static func buildAlert(title: String? = nil,
@@ -22,6 +21,7 @@ final class AlertHelper {
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
+
         let positiveAction = UIAlertAction(title: rightButtonTitle,
                                            style: .default,
                                            handler: rightButtonAction)
