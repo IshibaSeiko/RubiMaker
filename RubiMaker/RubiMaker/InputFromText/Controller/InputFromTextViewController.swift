@@ -30,7 +30,7 @@ final class InputFromTextViewController: UIViewController {
     @IBOutlet weak var convertTypeButton: UIButton!
     @IBOutlet weak var hiraganaLabel: UILabel!
     @IBOutlet weak var katakanaLabel: UILabel!
-
+    @IBOutlet weak var copyButton: UIButton!
 
     // MARK: - InputFromTextViewControllerDelegate
     weak var delegate: InputFromTextViewControllerDelegate?
@@ -93,6 +93,7 @@ final class InputFromTextViewController: UIViewController {
         case .reset:
             inputTextView.text = ""
             convertedTextView.text = ""
+            copyButton.isEnabled = false
             inputTextView.becomeFirstResponder()
             buttonStyle = .enable
         case .enable:
@@ -104,6 +105,17 @@ final class InputFromTextViewController: UIViewController {
         convertType = convertType == .hiragana ? .katakana : .hiragana
         buttonStyle = .convert
     }
+
+    @IBAction func didTapCopyButton(_ sender: UIButton) {
+        UIPasteboard.general.string = convertedTextView.text
+        let alert = UIAlertController.init(title: nil, message: "クリップボードにコピーしました。", preferredStyle: .alert)
+        present(alert, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                alert.dismiss(animated: true)
+            }
+        }
+    }
+
 }
 
 // MARK: - Instance Method
@@ -141,6 +153,8 @@ extension InputFromTextViewController {
         convertButton.layer.borderWidth = 0.5
         convertButton.layer.borderColor = UIColor.systemGray2.cgColor
         convertButton.layer.cornerRadius = 15.0
+
+        copyButton.isEnabled = false
 
         convertButton.setTitle("ひらがなに変換", for: .normal)
         convertButton.setTitle("リセット", for: .selected)
@@ -207,6 +221,7 @@ extension InputFromTextViewController: ReturnCodeResult {
                 return
             }
             convertedTextView.text = convertedData.converted
+            copyButton.isEnabled = true
             HistoryDao.update(object: ConvertEntity(input: inputTextView.text,
                                                     convertResponse: convertedData))
             buttonStyle = .reset

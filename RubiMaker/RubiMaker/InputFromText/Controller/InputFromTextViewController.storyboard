@@ -97,16 +97,44 @@
                                             <constraint firstItem="eea-jo-z7m" firstAttribute="centerX" secondItem="Een-KG-uJp" secondAttribute="centerX" id="LTD-AF-XfE"/>
                                         </constraints>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V3H-5z-adr" customClass="GrowingTextView" customModule="GrowingTextView">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ms-Qs-mqT">
                                         <rect key="frame" x="0.0" y="260" width="398" height="200"/>
-                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="ypb-Cq-9eO"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V3H-5z-adr" customClass="GrowingTextView" customModule="GrowingTextView">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="200"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="ypb-Cq-9eO"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTh-In-mNT">
+                                                <rect key="frame" x="354" y="0.0" width="44" height="200"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3Y-8R-0Oh">
+                                                        <rect key="frame" x="4" y="82" width="36" height="36"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="i3Y-8R-0Oh" secondAttribute="height" multiplier="1:1" id="Djn-Sz-cIH"/>
+                                                            <constraint firstAttribute="width" constant="36" id="cCG-kT-YGZ"/>
+                                                        </constraints>
+                                                        <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" image="doc.on.clipboard" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="didTapCopyButton:" destination="fzM-Fc-VcS" eventType="touchUpInside" id="zz4-fF-yLb"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="7nR-zS-hga"/>
+                                                    <constraint firstItem="i3Y-8R-0Oh" firstAttribute="centerX" secondItem="LTh-In-mNT" secondAttribute="centerX" id="BqJ-pC-9nJ"/>
+                                                    <constraint firstItem="i3Y-8R-0Oh" firstAttribute="centerY" secondItem="LTh-In-mNT" secondAttribute="centerY" id="KSI-eM-OsK"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -124,6 +152,7 @@
                         <outlet property="convertButtonBackView" destination="Een-KG-uJp" id="CYN-9S-QP8"/>
                         <outlet property="convertTypeButton" destination="PWV-JH-lQw" id="fJX-kU-Q3p"/>
                         <outlet property="convertedTextView" destination="V3H-5z-adr" id="UKz-KS-5tn"/>
+                        <outlet property="copyButton" destination="i3Y-8R-0Oh" id="mQb-5m-bEw"/>
                         <outlet property="hiraganaLabel" destination="hYP-LG-wSD" id="KXP-uB-Ncg"/>
                         <outlet property="inputTextView" destination="kLr-Z1-wQT" id="zk3-dC-Hhu"/>
                         <outlet property="katakanaLabel" destination="088-as-Vpm" id="9dZ-jC-scF"/>
@@ -136,5 +165,6 @@
     </scenes>
     <resources>
         <image name="arrow.2.squarepath" catalog="system" width="128" height="89"/>
+        <image name="doc.on.clipboard" catalog="system" width="117" height="128"/>
     </resources>
 </document>
