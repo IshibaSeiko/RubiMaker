@@ -27,7 +27,6 @@ final class InputFromTextViewController: UIViewController {
     @IBOutlet weak var convertedTextView: GrowingTextView!
     @IBOutlet weak var convertButtonBackView: UIView!
     @IBOutlet weak var convertButton: UIButton!
-    @IBOutlet private weak var bottomView: UIView!
 
     // MARK: - InputFromTextViewControllerDelegate
     weak var delegate: InputFromTextViewControllerDelegate?
@@ -51,6 +50,10 @@ final class InputFromTextViewController: UIViewController {
             }
         }
     }
+
+    private let textViewMinHeight: CGFloat = 50.0
+    private let textViewMaxHeight: CGFloat = 200.0
+    private let textViewMaxLength = 400
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -85,7 +88,8 @@ extension InputFromTextViewController {
     func isFull(_ isFull: Bool) {
         convertButtonBackView.isHidden = !isFull
         convertedTextView.isHidden = !isFull
-        bottomView.isHidden = isFull
+        inputTextView.maxHeight = isFull ? textViewMaxHeight : textViewMinHeight
+        inputTextView.minHeight = isFull ? textViewMaxHeight : textViewMinHeight
     }
 }
 
@@ -98,11 +102,16 @@ extension InputFromTextViewController {
         inputTextView.layer.borderColor = UIColor.systemGray2.cgColor
         inputTextView.layer.cornerRadius = 5.0
         inputTextView.placeholder = "変換したいテキストを入力してください。"
+        inputTextView.minHeight = textViewMinHeight
+        inputTextView.maxHeight = textViewMaxHeight
+        inputTextView.maxLength = textViewMaxLength
 
         convertedTextView.layer.borderWidth = 0.5
         convertedTextView.layer.borderColor = UIColor.systemGray2.cgColor
         convertedTextView.layer.cornerRadius = 5.0
         convertedTextView.placeholder = "変換されたテキストが表示されます。"
+        convertedTextView.minHeight = textViewMaxHeight
+        convertedTextView.maxHeight = textViewMaxHeight
 
         convertButton.layer.borderWidth = 0.5
         convertButton.layer.borderColor = UIColor.systemGray2.cgColor
@@ -111,7 +120,6 @@ extension InputFromTextViewController {
         convertButton.setTitle("Convert", for: .normal)
         convertButton.setTitle("Reset", for: .selected)
 
-        bottomView.topAnchor.constraint(equalTo: inputTextView.topAnchor, constant: 50).isActive = true
         isFull(false)
     }
 }
