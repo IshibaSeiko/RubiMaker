@@ -10,7 +10,6 @@ import UIKit
 import FloatingPanel
 
 final class HistoryViewController: UIViewController {
-
     // MARK: - IBOutlet
     @IBOutlet private weak var historyTableView: UITableView!
 
@@ -23,7 +22,8 @@ final class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        historyTableView.register(UINib(nibName: HistoryTableViewCell.className, bundle: nil), forCellReuseIdentifier: HistoryTableViewCell.className)
+        historyTableView.register(UINib(nibName: HistoryTableViewCell.className, bundle: nil),
+                                  forCellReuseIdentifier: HistoryTableViewCell.className)
         historyTableView.tableFooterView = UIView()
         historyTableView.delegate = self
         historyTableView.dataSource = historyListProvider
@@ -44,15 +44,15 @@ extension HistoryViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .destructive, title: "削除") { (action, view, completionHandler) in
-            HistoryDao.update(object: ConvertEntity(convertEntity: self.historyListProvider.history(index: indexPath.row), changeDeleteStatus: true))
-            self.historyListProvider.set(HistoryDao.findUnDeleteObjects())
+            HistoryDao.update(object: ConvertEntity(convertEntity: self.historyListProvider.history(index: indexPath.row),
+                                                    changeDeleteStatus: true))
 
             let historyList = HistoryDao.findUnDeleteObjects()
+            self.historyListProvider.set(historyList)
             if historyList.isEmpty {
                 self.historyTableView.reloadRows(at: [indexPath], with: .left)
             } else {
                 self.historyTableView.deleteRows(at: [indexPath], with: .left)
-
                 var indexArray = [IndexPath]()
                 if indexPath.row < historyList.count {
                     for i in indexPath.row ..< historyList.count {

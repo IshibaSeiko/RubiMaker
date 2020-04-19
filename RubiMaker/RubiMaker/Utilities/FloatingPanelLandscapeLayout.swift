@@ -9,7 +9,7 @@
 import UIKit
 import FloatingPanel
 
-class FloatingPanelLandscapeLayout: FloatingPanelLayout {
+final class FloatingPanelLandscapeLayout: FloatingPanelLayout {
     public var initialPosition: FloatingPanelPosition {
         return .tip
     }

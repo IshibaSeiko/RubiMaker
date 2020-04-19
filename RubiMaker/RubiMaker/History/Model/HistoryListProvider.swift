@@ -13,7 +13,6 @@ protocol HistoryListProviderProtocol: AnyObject {
 }
 
 final class HistoryListProvider: NSObject {
-
     weak var delegate: HistoryListProviderProtocol?
 
     fileprivate var history = [ConvertEntity]()
@@ -39,13 +38,16 @@ extension HistoryListProvider: UITableViewDataSource {
             return cell
         }
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.className, for: indexPath) as? HistoryTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.className,
+                                                       for: indexPath) as? HistoryTableViewCell else {
             let cell = UITableViewCell()
             cell.textLabel?.text = "変換履歴はありません"
             return cell
         }
         cell.favoriteButton.tag = indexPath.row
-        cell.favoriteButton.addTarget(self, action: #selector(changeFavoriteStatus(_:)), for: .touchUpInside)
+        cell.favoriteButton.addTarget(self,
+                                      action: #selector(changeFavoriteStatus(_:)),
+                                      for: .touchUpInside)
         return cell.setCell(history[indexPath.row])
     }
 }
@@ -54,6 +56,7 @@ extension HistoryListProvider {
     @objc func changeFavoriteStatus(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
 
-        delegate?.historyStatus(ConvertEntity(convertEntity: history(index: sender.tag), changeFavoriteStatus: true))
+        delegate?.historyStatus(ConvertEntity(convertEntity: history(index: sender.tag),
+                                              changeFavoriteStatus: true))
     }
 }

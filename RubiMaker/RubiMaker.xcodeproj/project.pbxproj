@@ -47,6 +47,7 @@
 		576E1A392444C49C00819B2E /* WebAPIRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */; };
 		576E1A3B2444C5E400819B2E /* Dictionary+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */; };
 		57FB99A8244C58C3003119B1 /* GrowingTextView in Frameworks */ = {isa = PBXBuildFile; productRef = 57FB99A7244C58C3003119B1 /* GrowingTextView */; };
+		57FB99AC244C8D8F003119B1 /* UniqueData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57FB99AB244C8D8F003119B1 /* UniqueData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		576E1A362444C44100819B2E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		576E1A382444C49C00819B2E /* WebAPIRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIRequestProtocol.swift; sourceTree = "<group>"; };
 		576E1A3A2444C5E400819B2E /* Dictionary+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dictionary+JSON.swift"; path = "RubiMaker/Extension/Foundation/Dictionary+JSON.swift"; sourceTree = SOURCE_ROOT; };
+		57FB99AB244C8D8F003119B1 /* UniqueData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UniqueData.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				5760DBA2244300E10085BD04 /* Info.plist */,
+				57FB99AB244C8D8F003119B1 /* UniqueData.plist */,
 				5760DB94244300DA0085BD04 /* AppDelegate.swift */,
 				5760DB96244300DA0085BD04 /* SceneDelegate.swift */,
 			);
@@ -469,6 +472,7 @@
 				5760DBA1244300E10085BD04 /* LaunchScreen.storyboard in Resources */,
 				5760DBCA244302C50085BD04 /* HistoryViewController.storyboard in Resources */,
 				5760DBCE244303370085BD04 /* HistoryTableViewCell.xib in Resources */,
+				57FB99AC244C8D8F003119B1 /* UniqueData.plist in Resources */,
 				5760DB9E244300E10085BD04 /* Assets.xcassets in Resources */,
 				5760DBD22443086B0085BD04 /* InputFromTextViewController.storyboard in Resources */,
 			);

@@ -116,7 +116,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3Y-8R-0Oh">
                                                         <rect key="frame" x="4" y="82" width="36" height="36"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="i3Y-8R-0Oh" secondAttribute="height" multiplier="1:1" id="Djn-Sz-cIH"/>
+                                                            <constraint firstAttribute="width" secondItem="i3Y-8R-0Oh" secondAttribute="height" id="Djn-Sz-cIH"/>
                                                             <constraint firstAttribute="width" constant="36" id="cCG-kT-YGZ"/>
                                                         </constraints>
                                                         <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -128,9 +128,9 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="44" id="7nR-zS-hga"/>
                                                     <constraint firstItem="i3Y-8R-0Oh" firstAttribute="centerX" secondItem="LTh-In-mNT" secondAttribute="centerX" id="BqJ-pC-9nJ"/>
                                                     <constraint firstItem="i3Y-8R-0Oh" firstAttribute="centerY" secondItem="LTh-In-mNT" secondAttribute="centerY" id="KSI-eM-OsK"/>
+                                                    <constraint firstAttribute="width" priority="999" constant="44" id="rl6-Y7-Mod"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

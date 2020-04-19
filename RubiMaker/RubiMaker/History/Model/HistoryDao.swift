@@ -10,11 +10,9 @@ import Foundation
 import RealmSwift
 
 final class HistoryDao {
-
     static let dao = RealmDaoHelper<ConvertEntity>()
 
     static func add(objects: [ConvertEntity]) {
-
         deleteAll()
         dao.add(objects: objects)
     }

@@ -19,7 +19,6 @@ protocol WebAPIRequestProtocol: AnyObject {
 }
 
 extension WebAPIRequestProtocol {
-
     var baseURLString: String {
         return "https://labs.goo.ne.jp/api/hiragana"
     }
