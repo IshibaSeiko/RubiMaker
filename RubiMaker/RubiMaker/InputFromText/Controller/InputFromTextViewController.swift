@@ -52,7 +52,7 @@ final class InputFromTextViewController: UIViewController {
     }
 
     private let textViewMinHeight: CGFloat = 50.0
-    private let textViewMaxHeight: CGFloat = 200.0
+    private let textViewMaxHeight: CGFloat = 150.0
     private let textViewMaxLength = 400
 
     // MARK: - LifeCycle
