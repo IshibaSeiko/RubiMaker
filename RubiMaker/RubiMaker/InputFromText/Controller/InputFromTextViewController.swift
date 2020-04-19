@@ -145,6 +145,14 @@ extension InputFromTextViewController: UITextViewDelegate {
             textView.resignFirstResponder()
             return false
         }
+
+        if text.contains("\n") {
+            inputTextView.text = inputTextView.text
+                + text.replacingOccurrences(of: "\n", with: " ")
+            textViewDidChange(inputTextView)
+            return false
+        }
+
         return true
     }
 
@@ -152,8 +160,6 @@ extension InputFromTextViewController: UITextViewDelegate {
         if textView != inputTextView {
             return
         }
-
-        textView.text = textView.text.replacingOccurrences(of: "\n", with: " ")
 
         switch buttonStyle {
         case .convert:
