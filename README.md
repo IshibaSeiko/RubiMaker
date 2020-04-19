@@ -7,8 +7,7 @@
 |項目|バージョン|
 |---|---|
 |Xcode|11.4+|
-|サポートOS|iOS 13.0+|
-|サポート端末|iPhone 11 Pro|
+|iOS|13.0+|
 
 ## 使用API
 [goo ラボ ひらがな化API](https://labs.goo.ne.jp/api/jp/hiragana-translation/)
