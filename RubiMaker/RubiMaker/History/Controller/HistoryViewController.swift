@@ -51,6 +51,9 @@ extension HistoryViewController: UITableViewDelegate {
                 self.historyTableView.reloadRows(at: [indexPath], with: .left)
             } else {
                 self.historyTableView.deleteRows(at: [indexPath], with: .left)
+                let indexSet = NSMutableIndexSet()
+                indexSet.add(indexPath.section)
+                self.historyTableView.reloadSections(indexSet as IndexSet, with: .top)
             }
             completionHandler(true)
         }
@@ -63,6 +66,7 @@ extension HistoryViewController: UITableViewDelegate {
 extension HistoryViewController: HistoryListProviderProtocol {
     func historyStatus(_ newElement: ConvertEntity) {
         HistoryDao.update(object: newElement)
+        historyListProvider.set(HistoryDao.findUnDeleteObjects())
         historyTableView.reloadData()
     }
 }
