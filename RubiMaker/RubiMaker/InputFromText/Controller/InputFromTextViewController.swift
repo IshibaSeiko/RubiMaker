@@ -69,7 +69,7 @@ final class InputFromTextViewController: UIViewController {
     @IBAction func didTapConvertButton(_ sender: UIButton) {
         switch buttonStyle {
         case .convert:
-            inputTextView.endEditing(true)
+            inputTextView.resignFirstResponder()
             convertAPI.convert(inputTextView.text, type: .hiragana)
         case .reset:
             inputTextView.text = ""
@@ -134,7 +134,24 @@ extension InputFromTextViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
     }
 
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if textView != inputTextView {
+            return true
+        }
+
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+
     func textViewDidChange(_ textView: UITextView) {
+        if textView != inputTextView {
+            return
+        }
+
+        textView.text = textView.text.replacingOccurrences(of: "\n", with: " ")
 
         switch buttonStyle {
         case .convert:
