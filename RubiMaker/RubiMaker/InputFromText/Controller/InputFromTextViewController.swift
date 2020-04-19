@@ -63,16 +63,17 @@ final class InputFromTextViewController: UIViewController {
 
     // MARK: - IBAction
     @IBAction func didTapConvertButton(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        switch sender.isSelected {
-        case true:
+        switch buttonStyle {
+        case .convert:
             inputTextView.endEditing(true)
             convertAPI.convert(inputTextView.text, type: .hiragana)
-        case false:
+        case .reset:
             inputTextView.text = ""
             convertedTextView.text = ""
             inputTextView.becomeFirstResponder()
             buttonStyle = .enable
+        case .enable:
+            break
         }
 
     }
