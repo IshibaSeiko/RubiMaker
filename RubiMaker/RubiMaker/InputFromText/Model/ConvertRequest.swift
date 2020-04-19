@@ -17,9 +17,16 @@ final class ConvertRequest: WebAPIRequestProtocol {
     var bodys: [String : Any]
 
     init(_ sentence: String, type: ConvertType) {
-        bodys = ["app_id":"efd3b572c82d110f1b0e9e6fea1df08a606e956933998bab17f3f723dfda682e",
+
+        let path = Bundle.main.path(forResource: "UniqueData", ofType: "plist") ?? ""
+        let url = URL(fileURLWithPath: path)
+        let data = try! Data(contentsOf: url)
+        let dic: Dictionary = try! PropertyListSerialization.propertyList(from: data, options: .mutableContainers, format: nil) as! Dictionary<String, String>
+        let appId = dic["app_id"]
+        
+        log?.info(appId)
+        bodys = ["app_id": appId ?? "",
                  "sentence": sentence,
                  "output_type": type.rawValue]
     }
-
 }
