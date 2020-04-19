@@ -18,16 +18,61 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EPZ-HZ-oJO">
                                 <rect key="frame" x="8" y="60" width="398" height="460"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kLr-Z1-wQT" customClass="GrowingTextView" customModule="GrowingTextView">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHt-tM-E54">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="200"/>
-                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="V87-8V-zLc"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                    </textView>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kLr-Z1-wQT" customClass="GrowingTextView" customModule="GrowingTextView">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="200"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="V87-8V-zLc"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                            </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvV-er-Zgh">
+                                                <rect key="frame" x="354" y="0.0" width="44" height="200"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fUA-9e-SzF">
+                                                        <rect key="frame" x="4" y="68" width="36" height="64"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="かな" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYP-LG-wSD">
+                                                                <rect key="frame" x="0.0" y="0.0" width="36" height="13.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWV-JH-lQw">
+                                                                <rect key="frame" x="0.0" y="13.5" width="36" height="36"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="36" id="TOL-xQ-gw1"/>
+                                                                    <constraint firstAttribute="width" secondItem="PWV-JH-lQw" secondAttribute="height" id="unm-mw-aNx"/>
+                                                                </constraints>
+                                                                <color key="tintColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal" image="arrow.2.squarepath" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="didTapConvertTypeButton:" destination="fzM-Fc-VcS" eventType="touchUpInside" id="KqR-T8-q4g"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カナ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="088-as-Vpm">
+                                                                <rect key="frame" x="0.0" y="49.5" width="36" height="14.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="moH-4t-bq9"/>
+                                                    <constraint firstItem="fUA-9e-SzF" firstAttribute="centerY" secondItem="wvV-er-Zgh" secondAttribute="centerY" id="pQC-mM-aD1"/>
+                                                    <constraint firstItem="fUA-9e-SzF" firstAttribute="centerX" secondItem="wvV-er-Zgh" secondAttribute="centerX" id="yLr-qN-Sso"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Een-KG-uJp">
                                         <rect key="frame" x="0.0" y="200" width="398" height="60"/>
                                         <subviews>
@@ -77,8 +122,11 @@
                     <connections>
                         <outlet property="convertButton" destination="eea-jo-z7m" id="VrQ-gY-gsu"/>
                         <outlet property="convertButtonBackView" destination="Een-KG-uJp" id="CYN-9S-QP8"/>
+                        <outlet property="convertTypeButton" destination="PWV-JH-lQw" id="fJX-kU-Q3p"/>
                         <outlet property="convertedTextView" destination="V3H-5z-adr" id="UKz-KS-5tn"/>
+                        <outlet property="hiraganaLabel" destination="hYP-LG-wSD" id="KXP-uB-Ncg"/>
                         <outlet property="inputTextView" destination="kLr-Z1-wQT" id="zk3-dC-Hhu"/>
+                        <outlet property="katakanaLabel" destination="088-as-Vpm" id="9dZ-jC-scF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2W-pA-ZK1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -86,4 +134,7 @@
             <point key="canvasLocation" x="179.71014492753625" y="101.78571428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.2.squarepath" catalog="system" width="128" height="89"/>
+    </resources>
 </document>

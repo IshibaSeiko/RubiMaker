@@ -27,6 +27,10 @@ final class InputFromTextViewController: UIViewController {
     @IBOutlet weak var convertedTextView: GrowingTextView!
     @IBOutlet weak var convertButtonBackView: UIView!
     @IBOutlet weak var convertButton: UIButton!
+    @IBOutlet weak var convertTypeButton: UIButton!
+    @IBOutlet weak var hiraganaLabel: UILabel!
+    @IBOutlet weak var katakanaLabel: UILabel!
+
 
     // MARK: - InputFromTextViewControllerDelegate
     weak var delegate: InputFromTextViewControllerDelegate?
@@ -50,6 +54,21 @@ final class InputFromTextViewController: UIViewController {
             }
         }
     }
+    var convertType: ConvertType = .hiragana {
+        didSet {
+            switch convertType {
+            case .hiragana:
+                convertButton.setTitle("ひらがなに変換", for: .normal)
+                hiraganaLabel.textColor = .darkText
+                katakanaLabel.textColor = .secondaryLabel
+            case .katakana:
+                convertButton.setTitle("カタカナに変換", for: .normal)
+                hiraganaLabel.textColor = .secondaryLabel
+                katakanaLabel.textColor = .darkText
+            }
+
+        }
+    }
 
     private let textViewMinHeight: CGFloat = 50.0
     private let textViewMaxHeight: CGFloat = 150.0
@@ -70,7 +89,7 @@ final class InputFromTextViewController: UIViewController {
         switch buttonStyle {
         case .convert:
             inputTextView.resignFirstResponder()
-            convertAPI.convert(inputTextView.text, type: .hiragana)
+            convertAPI.convert(inputTextView.text, type: convertType)
         case .reset:
             inputTextView.text = ""
             convertedTextView.text = ""
@@ -79,7 +98,10 @@ final class InputFromTextViewController: UIViewController {
         case .enable:
             break
         }
+    }
 
+    @IBAction func didTapConvertTypeButton(_ sender: UIButton) {
+        convertType = convertType == .hiragana ? .katakana : .hiragana
     }
 }
 
@@ -119,8 +141,8 @@ extension InputFromTextViewController {
         convertButton.layer.borderColor = UIColor.systemGray2.cgColor
         convertButton.layer.cornerRadius = 15.0
 
-        convertButton.setTitle("Convert", for: .normal)
-        convertButton.setTitle("Reset", for: .selected)
+        convertButton.setTitle("ひらがなに変換", for: .normal)
+        convertButton.setTitle("リセット", for: .selected)
 
         isFull(false)
     }
