@@ -31,6 +31,7 @@ final class ConvertAPI: ConvertAPIModel {
 
                 if let decodedResult = try? decoder.decode(ConvertResponse.self, from: result) {
                     self.returnCodeResult?.returnCodeResult(returnCode: .success(decodedResult))
+                    return
                 }
 
                 if let decodedResult = try? decoder.decode(ConvertErrorResponse.self, from: result) {
@@ -39,7 +40,7 @@ final class ConvertAPI: ConvertAPIModel {
                     case .rateLimitExceeded:
                         self.returnCodeResult?.returnCodeResult(returnCode: .rateLimitExceeded)
                     default:
-                        self.returnCodeResult?.returnCodeResult(returnCode: .systemError)
+                        break
                     }
                 }
                 self.returnCodeResult?.returnCodeResult(returnCode: .systemError)
