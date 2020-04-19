@@ -116,7 +116,7 @@ extension InputFromTextViewController: ReturnCodeResult {
     func returnCodeResult(returnCode: IndividualResult) {
         switch returnCode {
         case .loading:
-            break
+            startActivityIndicator()
         case .success(let result):
             guard let convertedData = result as? ConvertResponse else {
                 return
@@ -126,13 +126,15 @@ extension InputFromTextViewController: ReturnCodeResult {
                                                     convertResponse: convertedData))
             convertButton.isSelected = !convertButton.isSelected
             delegate?.finishConvert()
-            
+            stopActivityIndicator()
         case .failure(let error):
             log?.info(error)
+            stopActivityIndicator()
             let alert = AlertHelper.buildAlert(message: returnCode.errorMessage)
             present(alert, animated: true)
             
         case .systemError, .payloadTooLarge, .rateLimitExceeded:
+            stopActivityIndicator()
             let alert = AlertHelper.buildAlert(message: returnCode.errorMessage)
             present(alert, animated: true)
         }
