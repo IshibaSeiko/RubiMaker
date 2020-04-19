@@ -43,4 +43,21 @@ class RubiMakerTests: XCTestCase {
         let expected = "へんかんされたてきすと"
         XCTAssertEqual(actual, expected)
     }
+
+    func test_inputTextViewが空だったらconvertButtonが非活性になる() {
+        inputFromTextViewController = InputFromTextViewController.instance(convertAPI: ConvertResponseStub.init(requestId: "labs.goo.ne.jp\t1587286212\t0", outputType: "hiragana", converted: "へんかんされたてきすと"))
+        inputFromTextViewController.loadViewIfNeeded()
+        XCTContext.runActivity(named: "入力された文字の有無") { _ in
+            XCTContext.runActivity(named: "入力あり") { _ in
+                inputFromTextViewController.inputTextView.text = "変換したいテキスト"
+                inputFromTextViewController.textViewDidChange(inputFromTextViewController.inputTextView)
+                XCTAssertTrue(inputFromTextViewController.convertButton.isEnabled)
+            }
+            XCTContext.runActivity(named: "入力なし") { _ in
+                inputFromTextViewController.inputTextView.text = ""
+                inputFromTextViewController.textViewDidChange(inputFromTextViewController.inputTextView)
+                XCTAssertFalse(inputFromTextViewController.convertButton.isEnabled)
+            }
+        }
+    }
 }
