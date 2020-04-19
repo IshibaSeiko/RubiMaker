@@ -3,6 +3,11 @@
 
 [![Language](https://img.shields.io/badge/language-Swift%205.0-orange.svg)](https://swift.org)
 
+## スクリーンショット
+|ライトモード|ダークモード|
+|---|---|
+|<img src="./Resource/light.gif" width="320px">|<img src="./Resource/dark.gif" width="320px">|
+
 ## 開発環境
 |項目|バージョン|
 |---|---|
