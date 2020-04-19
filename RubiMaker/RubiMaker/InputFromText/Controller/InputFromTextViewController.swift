@@ -23,9 +23,9 @@ final class InputFromTextViewController: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet weak var inputTextView: UITextView!
-    @IBOutlet private weak var convertedTextView: UITextView!
+    @IBOutlet weak var convertedTextView: UITextView!
     @IBOutlet weak var convertButtonBackView: UIView!
-    @IBOutlet private weak var convertButton: UIButton!
+    @IBOutlet weak var convertButton: UIButton!
     @IBOutlet private weak var bottomView: UIView!
 
     // MARK: - InputFromTextViewControllerDelegate
@@ -33,7 +33,7 @@ final class InputFromTextViewController: UIViewController {
 
     // MARK: - Private Property
     private var convertAPI: ConvertAPIModel!
-    private var buttonStyle: ButtonStyle = .enable {
+    var buttonStyle: ButtonStyle = .enable {
         didSet {
             switch buttonStyle {
             case .convert:
@@ -63,16 +63,17 @@ final class InputFromTextViewController: UIViewController {
 
     // MARK: - IBAction
     @IBAction func didTapConvertButton(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        switch sender.isSelected {
-        case true:
+        switch buttonStyle {
+        case .convert:
             inputTextView.endEditing(true)
             convertAPI.convert(inputTextView.text, type: .hiragana)
-        case false:
+        case .reset:
             inputTextView.text = ""
             convertedTextView.text = ""
             inputTextView.becomeFirstResponder()
             buttonStyle = .enable
+        case .enable:
+            break
         }
 
     }

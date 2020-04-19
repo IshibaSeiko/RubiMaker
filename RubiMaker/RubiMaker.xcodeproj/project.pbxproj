@@ -10,6 +10,7 @@
 		57068955244BF44500104371 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57068954244BF44500104371 /* AlertHelper.swift */; };
 		57068958244C1DF500104371 /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57068957244C1DF500104371 /* UIViewController+ActivityIndicator.swift */; };
 		5706895A244C1E9A00104371 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57068959244C1E9A00104371 /* Constants.swift */; };
+		5706895C244C48AC00104371 /* ConvertResponseStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706895B244C48AC00104371 /* ConvertResponseStub.swift */; };
 		572B5B332449E960008D9EC2 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 572B5B322449E960008D9EC2 /* FloatingPanel */; };
 		572B5B35244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */; };
 		572B5B39244B098B008D9EC2 /* ConvertEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B5B38244B098B008D9EC2 /* ConvertEntity.swift */; };
@@ -68,6 +69,7 @@
 		57068954244BF44500104371 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		57068957244C1DF500104371 /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		57068959244C1E9A00104371 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5706895B244C48AC00104371 /* ConvertResponseStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponseStub.swift; sourceTree = "<group>"; };
 		572B5B34244AA355008D9EC2 /* FloatingPanelLandscapeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelLandscapeLayout.swift; sourceTree = "<group>"; };
 		572B5B38244B098B008D9EC2 /* ConvertEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertEntity.swift; sourceTree = "<group>"; };
 		572B5B3A244B0C08008D9EC2 /* RealmDaoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDaoHelper.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				5760DBAB244300E10085BD04 /* RubiMakerTests.swift */,
+				5706895B244C48AC00104371 /* ConvertResponseStub.swift */,
 				5760DBAD244300E10085BD04 /* Info.plist */,
 			);
 			path = RubiMakerTests;
@@ -519,6 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5706895C244C48AC00104371 /* ConvertResponseStub.swift in Sources */,
 				5760DBAC244300E10085BD04 /* RubiMakerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
