@@ -69,16 +69,18 @@ extension InputFromTextViewController {
 // MARK: - Private Method
 extension InputFromTextViewController {
     private func setInterface() {
+        view.alpha = 0.8
+        
         inputTextView.layer.borderWidth = 0.5
-        inputTextView.layer.borderColor = UIColor.gray.cgColor
+        inputTextView.layer.borderColor = UIColor.systemGray2.cgColor
         inputTextView.layer.cornerRadius = 5.0
 
         convertedTextView.layer.borderWidth = 0.5
-        convertedTextView.layer.borderColor = UIColor.gray.cgColor
+        convertedTextView.layer.borderColor = UIColor.systemGray2.cgColor
         convertedTextView.layer.cornerRadius = 5.0
 
         convertButton.layer.borderWidth = 0.5
-        convertButton.layer.borderColor = UIColor.gray.cgColor
+        convertButton.layer.borderColor = UIColor.systemGray2.cgColor
         convertButton.layer.cornerRadius = 15.0
 
         convertButton.setTitle("Convert", for: .normal)
@@ -122,6 +124,7 @@ extension InputFromTextViewController: ReturnCodeResult {
             convertedTextView.text = convertedData.converted
             HistoryDao.update(object: ConvertEntity(input: inputTextView.text,
                                                     convertResponse: convertedData))
+            convertButton.isSelected = !convertButton.isSelected
             delegate?.finishConvert()
             
         case .failure(let error):

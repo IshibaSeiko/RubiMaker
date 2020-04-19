@@ -16,20 +16,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1l3-Eu-jPd">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="705"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="kSA-UU-Rix" firstAttribute="bottom" secondItem="1l3-Eu-jPd" secondAttribute="bottom" id="2x4-i1-gUc"/>
                             <constraint firstItem="kSA-UU-Rix" firstAttribute="trailing" secondItem="1l3-Eu-jPd" secondAttribute="trailing" id="Cth-91-5zr"/>
                             <constraint firstItem="1l3-Eu-jPd" firstAttribute="leading" secondItem="kSA-UU-Rix" secondAttribute="leading" id="JXp-sV-u7H"/>
+                            <constraint firstItem="1l3-Eu-jPd" firstAttribute="bottom" secondItem="kSA-UU-Rix" secondAttribute="bottom" constant="-69" id="KWX-ag-rb8"/>
                             <constraint firstItem="1l3-Eu-jPd" firstAttribute="top" secondItem="kSA-UU-Rix" secondAttribute="top" id="Xb2-u1-xbH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kSA-UU-Rix"/>
                     </view>
-                    <navigationItem key="navigationItem" id="BqV-p0-6U7"/>
+                    <navigationItem key="navigationItem" id="EiV-Ef-ERD"/>
                     <connections>
                         <outlet property="historyTableView" destination="1l3-Eu-jPd" id="eqe-Nz-ENy"/>
                     </connections>

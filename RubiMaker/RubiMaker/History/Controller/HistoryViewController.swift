@@ -32,6 +32,7 @@ final class HistoryViewController: UIViewController {
 
         inputFromTextViewController.delegate = self
         floatingPanelController.delegate = self
+        floatingPanelController.surfaceView.cornerRadius = 10.0
         floatingPanelController.set(contentViewController: inputFromTextViewController)
         floatingPanelController.addPanel(toParent: self, animated: true)
     }
