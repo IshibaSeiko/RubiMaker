@@ -47,13 +47,19 @@ extension HistoryViewController: UITableViewDelegate {
             HistoryDao.update(object: ConvertEntity(convertEntity: self.historyListProvider.history(index: indexPath.row), changeDeleteStatus: true))
             self.historyListProvider.set(HistoryDao.findUnDeleteObjects())
 
-            if HistoryDao.findUnDeleteObjects().isEmpty {
+            let historyList = HistoryDao.findUnDeleteObjects()
+            if historyList.isEmpty {
                 self.historyTableView.reloadRows(at: [indexPath], with: .left)
             } else {
                 self.historyTableView.deleteRows(at: [indexPath], with: .left)
-                let indexSet = NSMutableIndexSet()
-                indexSet.add(indexPath.section)
-                self.historyTableView.reloadSections(indexSet as IndexSet, with: .top)
+
+                var indexArray = [IndexPath]()
+                if indexPath.row < historyList.count {
+                    for i in indexPath.row ..< historyList.count {
+                        indexArray.append(IndexPath(row: i, section: indexPath.section))
+                    }
+                }
+                self.historyTableView.reloadRows(at: indexArray, with: .none)
             }
             completionHandler(true)
         }
