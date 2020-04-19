@@ -42,13 +42,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbJ-so-5ke">
                                 <rect key="frame" x="268" y="0.0" width="44" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Vii-MH-vEv"/>
+                                    <constraint firstAttribute="width" priority="999" constant="44" id="0Ts-0L-raO"/>
                                     <constraint firstAttribute="width" secondItem="IbJ-so-5ke" secondAttribute="height" id="XW7-hq-y1x"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="star" catalog="system"/>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="IbJ-so-5ke" firstAttribute="centerY" secondItem="XlU-6A-CSK" secondAttribute="centerY" id="XGU-da-dsr"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
