@@ -13,7 +13,7 @@
 ## 使用API
 [goo ラボ ひらがな化API](https://labs.goo.ne.jp/api/jp/hiragana-translation/)
 
-## Library
+## 使用ライブラリ
 ライブラリはSwiftPMによって導入しています。
 - 通信
   - [Alamofire](https://github.com/Alamofire/Alamofire)
@@ -41,6 +41,7 @@
 - 履歴機能、お気に入り登録機能、削除機能
 
 ## 今後の課題
+- realm-cocoaによる大量のwarningの改善
 - 通信切断時の機能拡充
     - 通信切断中、入力したテキストが過去に変換されていた場合はDBから変換後テキストを取得
 - カメラや写真から取得したテキストを変換する機能の追加
