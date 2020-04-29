@@ -11,7 +11,7 @@ import GrowingTextView
 
 protocol InputFromTextViewControllerDelegate: AnyObject {
     func textViewDidBeginEditing()
-    func finishConvert()
+    func convertFinished()
 }
 
 enum ButtonStyle {
@@ -228,7 +228,7 @@ extension InputFromTextViewController: ReturnCodeResult {
             HistoryDao.update(object: ConvertEntity(input: inputTextView.text,
                                                     convertResponse: convertedData))
             buttonStyle = .reset
-            delegate?.finishConvert()
+            delegate?.convertFinished()
             stopActivityIndicator()
 
         case .failure(let error):

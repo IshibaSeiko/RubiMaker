@@ -84,7 +84,7 @@ extension HistoryViewController: InputFromTextViewControllerDelegate {
         inputFromTextViewController.isFull(true)
     }
 
-    func finishConvert() {
+    func convertFinished() {
         historyListProvider.set(HistoryDao.findUnDeleteObjects())
         historyTableView.reloadData()
     }
