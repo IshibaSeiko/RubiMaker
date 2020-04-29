@@ -81,7 +81,6 @@ final class InputFromTextViewController: UIViewController {
         super.viewDidLoad()
         inputTextView.delegate = self
         convertedTextView.isEditable = false
-        convertAPI.returnCodeResult = self
         buttonStyle = .enable
         setInterface()
     }
@@ -91,7 +90,7 @@ final class InputFromTextViewController: UIViewController {
         switch buttonStyle {
         case .convert:
             inputTextView.resignFirstResponder()
-            convertAPI.convert(inputTextView.text, type: convertType)
+            convertAPI.convert(inputTextView.text, type: convertType, delegate: self)
 
         case .reset:
             inputTextView.text = ""

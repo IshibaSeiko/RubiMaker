@@ -9,16 +9,13 @@
 import Foundation
 
 protocol ConvertAPIModel: AnyObject {
-    var returnCodeResult: ReturnCodeResult? { get set }
-    func convert(_ sentence: String, type: ConvertType)
+    func convert(_ sentence: String, type: ConvertType, delegate: ReturnCodeResult?)
 }
 
 final class ConvertAPI: ConvertAPIModel {
-    weak var returnCodeResult: ReturnCodeResult?
-    
-    func convert(_ sentence: String, type: ConvertType) {
+    func convert(_ sentence: String, type: ConvertType, delegate: ReturnCodeResult?) {
         let request = ConvertRequest(sentence, type: type)
-        returnCodeResult?.returnCodeResult(returnCode: .loading)
+        delegate?.returnCodeResult(returnCode: .loading)
         
         APIClient.request(request: request) { response in
             switch response {
@@ -30,7 +27,7 @@ final class ConvertAPI: ConvertAPIModel {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
                 if let decodedResult = try? decoder.decode(ConvertResponse.self, from: result) {
-                    self.returnCodeResult?.returnCodeResult(returnCode: .success(decodedResult))
+                    delegate?.returnCodeResult(returnCode: .success(decodedResult))
                     return
                 }
                 
@@ -38,27 +35,27 @@ final class ConvertAPI: ConvertAPIModel {
                     let errorType = ConvertAPIError(rawValue: decodedResult.error.message)
                     switch errorType {
                     case .rateLimitExceeded:
-                        self.returnCodeResult?.returnCodeResult(returnCode: .rateLimitExceeded)
+                        delegate?.returnCodeResult(returnCode: .rateLimitExceeded)
                     default:
                         break
                     }
                 }
-                self.returnCodeResult?.returnCodeResult(returnCode: .systemError)
+                delegate?.returnCodeResult(returnCode: .systemError)
                 
             case .failure(let error):
                 
                 switch error {
                 case ErrorResult.payloadTooLarge:
-                    self.returnCodeResult?.returnCodeResult(returnCode: .payloadTooLarge)
+                    delegate?.returnCodeResult(returnCode: .payloadTooLarge)
                     
                 case ErrorResult.notFound,
                      ErrorResult.badRequest,
                      ErrorResult.methodNotAllowed,
                      ErrorResult.internalServerError:
-                    self.returnCodeResult?.returnCodeResult(returnCode: .systemError)
+                    delegate?.returnCodeResult(returnCode: .systemError)
                     
                 default:
-                    self.returnCodeResult?.returnCodeResult(returnCode: .failure(error))
+                    delegate?.returnCodeResult(returnCode: .failure(error))
                 }
             }
         }
